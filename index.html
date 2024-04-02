@@ -24,6 +24,21 @@
         </svg>
     </a>
     <script src="index.js"></script>
+    <script>setInterval(function () {
+    const btn = document.querySelector('.btn-60');
+    btn.classList.add('animate-jello');
+    setTimeout(function () {
+        btn.classList.remove('animate-jello');
+    }, 800);
+}, 1600);
+
+document.getElementById('FULLSCREENANDCLEAR').addEventListener('click', function () {
+    if (document.getElementById('STRONGFC').classList.contains('CONTAINERSVGSTRONG')) {
+        document.getElementById('STRONGFC').classList.remove('CONTAINERSVGSTRONG');
+    } else {
+        document.getElementById('STRONGFC').classList.add('CONTAINERSVGSTRONG');
+    }
+});</script>
 </body>
 
 </html>
