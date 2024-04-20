@@ -1,0 +1,50 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+body {
+  font-size: 12px;
+}
+
+button {
+  margin-bottom: 8px;
+  width: 150px;
+}
+
+.panelL {
+  width: 150px;
+  height: 400px;
+  display: inline-block;
+  border: 1px solid #dedede;
+}
+
+.panelR {
+  width: 400px;
+  height: 400px;
+  display: inline-block;
+  border: 1px solid #dedede;
+}
+
+.justLeaveItAnyway {
+  display: none;
+}
+
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+.splt{
+  background-color: #DDB98B;
+}
