@@ -1,0 +1,161 @@
+/*.openinghours {
+    font-family: Lucida Console;
+    border-radius: 4px;
+    margin: 10px;
+    box-shadow: 0 0 10px black;
+    padding: 0 10px 0 10px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.openinghourscontent {
+    float: left;
+}
+
+.openinghourscontent h2 {
+    display: block;
+    text-align: center;
+    margin-top: .33em;
+}
+
+.openinghourscontent button {
+    color: white;
+    font-family: Courier New;
+    font-size: large;
+    font-weight: bolder;
+    background-color: #4679BD;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+}*/
+
+.today {
+    color: #8AC007;
+}
+
+.opening-hours-table tr td:first-child {
+    font-weight: bold;
+}
+
+/*#open-status {
+    display: block;
+    margin-top: -1em;
+    text-align: center;
+    border: dotted lightgrey 3px;
+}*/
+
+.openorclosed {
+    color: black;
+}
+
+.openorclosed:after {
+    content: " open during these hours:";
+}
+
+.open {
+    color: green;
+}
+
+.open:after {
+    content: " Open";
+    color: #6C0;
+}
+
+.closed:after {
+    content: " Closed";
+    color: red;
+}
+
+/*.opening-hours-table tr td {
+    padding: 5px;
+}*/
+
+/*#monday_chinese {
+    position: absolute;
+    visibility: hidden;
+}
+
+#monday_chinese:before {
+    content: "一";
+    visibility: visible;
+}
+
+#tuesday_chinese {
+    position: absolute;
+    visibility: hidden;
+}
+
+#tuesday_chinese:before {
+    content: "二";
+    visibility: visible;
+}
+
+#wednesday_chinese {
+    position: absolute;
+    visibility: hidden;
+}
+
+#wednesday_chinese:before {
+    content: "三";
+    visibility: visible;
+}
+
+#thursday_chinese {
+    position: absolute;
+    visibility: hidden;
+}
+
+#thursday_chinese:before {
+    content: "四";
+    visibility: visible;
+}
+
+#friday_chinese {
+    position: absolute;
+    visibility: hidden;
+}
+
+#friday_chinese:before {
+    content: "五";
+    visibility: visible;
+}
+
+#saturday_chinese {
+    position: absolute;
+    visibility: hidden;
+}
+
+#saturday_chinese:before {
+    content: "六";
+    visibility: visible;
+}
+
+#sunday_chinese {
+    position: absolute;
+    visibility: hidden;
+}
+
+#sunday_chinese:before {
+    content: "日";
+    visibility: visible;
+}*/
+
+/*!Resistance to mainstream templates semantic-ui*/
+
+.openinghours .openinghourscontent .opening-hours-table .no_right_border {
+    border-right: none;
+}
+
+.openinghours .openinghourscontent .opening-hours-table .no_left_border {
+    border-left: none;
+}
+
+/*mobile*/
+
+.openinghourscontent.section .ui.two.column.very.relaxed.grid .LBD {
+    border-left: 1vw solid #DDB98B;
+}
+
+.openinghourscontent.section .ui.two.column.very.relaxed.grid .RBD {
+    border-right: 1vw solid #DDB98B;
+}

@@ -1,0 +1,162 @@
+extends layout
+
+block contentHEAD
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(content='IE=edge,chrome=1' http-equiv='X-UA-Compatible')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no')
+    meta(name='description' content='Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI.')
+    meta(name='keywords' content='Semantic-UI, Theme, Design, Template')
+    meta(name='author' content='PPType')
+    meta(name='theme-color' content='#ffffff')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='/newbookpage/stylesheets/index.css' type='text/css')
+    style.
+        @import url('/jumbotron/stylesheets/customStyle.css');
+    style.
+        #b64data{
+        width:100%;
+        }
+        a { text-decoration: none }
+        #drop-zone{
+        background: white;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        z-index: -1;
+        }
+        #drop-zone p, #drop-zone svg { pointer-events: none }
+        #drop-zone svg { margin-right: 5px }
+        .execl_clear { display: none }
+    link(rel='stylesheet' href='/stylesheets/External_embedded_search_box.css' type='text/css')
+
+block content
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+
+    //上面是excel下面是ui
+    include includes/navbar.pug
+    .ui.main.container
+        h1.huge.header 電子資源
+        .ui.secondary.pointing.menu
+            if emt==="tab0"
+                a.item.active(href='?tab=0') 校內資源
+            else 
+                a.item(href='?tab=0') 校內資源
+            if emt==="tab1"
+                a.item.active(href='?tab=1') 校外資源
+            else 
+                a.item(href='?tab=1') 校外資源
+            
+            if emt==="tab2"
+                a.item.active(href='?tab=2') 常用連結
+            else
+                a.item(href='?tab=2') 常用連結
+                
+        table.ui.celled.table
+            thead
+                if emt==="tab0"
+                    tr
+                        th(scope='col') 流水號
+                        th(scope='col') 名稱
+                        th(scope='col') 作者
+                        th(scope='col') 資源類型
+                        th(scope='col') 發布時間
+                        th(scope='col') 備註
+                        th(scope='col') 檔案
+                else if emt==="tab1"
+                    tr
+                        th(scope='col') 流水號
+                        th(scope='col') 名稱
+                        th(scope='col') 提供者
+                        th(scope='col') 類型
+                        th(scope='col') 發布時間
+                        th(scope='col') 備註
+                        th(scope='col') 超連結
+                else if emt==="tab2"
+                    tr
+                        th(scope='col') 流水號
+                        th(scope='col') 網站名稱
+                        th(scope='col') 分類
+                        th(scope='col') 超連結
+                else
+                    tr
+                        th error!
+            tbody
+                if emt==="tab0"
+                    each eo, index in e3
+                        tr
+                            td
+                                b= index+1
+                            td= eo.osn2
+                            td
+                                b= eo.provider2
+                            td
+                                b= String(eo.c2)+' '+String(eo.Textafterexternallinkother2)
+                            td
+                                b= String(eo.yPublished_External2)+'年'+String(eo.mPublished_External2)+'月'+String(eo.dPublished_External2)+'日'
+                            td= eo.Remarks_External2
+                            td
+                                .tm-status-circle.moving
+                                a.ui.button(href=`/oc-ebook?id=${eo.id}&h=${eo.objhash}` target="_blank")
+                                    i.save.icon
+                                    |   開啟
+                                //按客戶要求，不提供使用者下載，但下方那個下載按鈕是好的(22.03.17)
+                                //button.ui.button(onclick=`function base64ToArrayBuffer(base64) { var binaryString = window.atob(base64); var binaryLen = binaryString.length; var bytes = new Uint8Array(binaryLen); for (var i = 0; i < binaryLen; i++) { var ascii = binaryString.charCodeAt(i); bytes[i] = ascii;}return bytes;}function saveByteArray(reportName, byte) {var blob = new Blob([byte], {type: "${eo.sub}"});var link = document.createElement('a');link.href = window.URL.createObjectURL(blob); var fileName = reportName;link.download = fileName;link.click();};var sampleArr = base64ToArrayBuffer('${eo.file.toString('base64')}');saveByteArray('${eo.osn2}', sampleArr);`)
+                                    i.save.icon
+                                    |   下載
+                else if emt==="tab1"
+                    each eo, index in e2
+                        tr
+                            td
+                                b= index+1
+                                //.tm-status-circle.pending
+                            td= eo.osn
+                            td
+                                b= eo.provider
+                            td
+                                b= String(eo.c)+' '+String(eo.Textafterexternallinkother)
+                            td
+                                b= String(eo.yPublished_External)+'年'+String(eo.mPublished_External)+'月'+String(eo.dPublished_External)+'日'
+                            td= eo.Remarks_External
+                            td
+                                .tm-status-circle.moving
+                                a.ui.button(href=`${eo.urle}` target='_blank')
+                                    i.external.alternate.icon
+                                    |   開啟
+                else if emt==="tab2"
+                    each eo, index in e1
+                        tr
+                            td
+                                b= index+1
+                                //.tm-status-circle.pending
+                            td= eo.name
+                            td= eo.subcategory
+                            td
+                                .tm-status-circle.moving
+                                a.ui.button(href=`${eo.url}` target='_blank')
+                                    i.external.alternate.icon
+                                    |   開啟
+                else
+                    tr
+                        th error!
+      
+    #aLotOFjs(style='display: none;')
+      // 請注意:所有script的順序都是嚴格要求的
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+      script(src='https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js')
+      script(src='https://kit.fontawesome.com/8d41246ac0.js' crossorigin='anonymous')
+
+      //-存檔ok,db輸入框

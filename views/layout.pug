@@ -1,0 +1,48 @@
+doctype html
+html
+  head
+    //for markdown latex
+    link( crossorigin="anonymous" rel='stylesheet' href='https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css')
+    link(crossorigin="anonymous" rel='stylesheet' href='https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css')
+    script(crossorigin="anonymous" src='https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js')
+    script(crossorigin="anonymous" src='https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js')
+    script(crossorigin="anonymous" src='https://cdn.jsdelivr.net/npm/markdown-it-texmath/texmath.min.js')
+    link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/main_page_back.css')
+    //The top is the end of the check point
+    title= title
+    //link(rel='stylesheet', href='/stylesheets/style.css')
+    style.
+      *{font-family:'Noto Sans TC'}
+    block contentHEAD
+  body#root
+    if window_location_href_main
+      button#main_page_back_btn(onclick='window.location.href = "/main";' title='Go to top') 回後台首頁
+    script.
+        const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    #quickPOPUP.ui.basic.modal(style="display:none;")
+      .ui.icon.header
+        i#quickPOPUPtopic.archive.icon 標題
+      .content
+        p#quickPOPUPinfo 說明
+      .actions
+        .ui.red.basic.cancel.inverted.button
+          i#quickPOPUPno.remove.icon No
+        .ui.green.ok.inverted.button
+          i#quickPOPUPyes.checkmark.icon Yes
+    block content
+    script.
+      WebFontConfig = {
+      custom: {
+      //families: ['DFYuan-W5-WIN-BF'],
+      //urls: ['/stylesheets/fonts.css']
+      families: ['Noto Sans TC'],
+      urls: ['https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional']
+      }
+      };
+      (function (d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.async = true;//非同步方式載入.js
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+      })(document);

@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "reg.css",
+	"sources": [
+		"reg.sass"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,GAAG,AAAA,+BAA+B,CAAC;EACjC,OAAO,EAAE,IAAI,GAAG;;AAElB,AAAA,MAAM,AAAA,+BAA+B,CAAC;EACpC,OAAO,EAAE,IAAI,GAAG;;AAElB,AAAA,+BAA+B,CAAC,kBAAkB,CAAC;EACjD,OAAO,EAAE,IAAI,GAAG;;AAElB,AAAA,+BAA+B,CAAC,kBAAkB,CAAC;EACjD,OAAO,EAAE,IAAI,GAAG"
+}

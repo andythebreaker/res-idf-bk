@@ -1,0 +1,548 @@
+/**
+ * Add the correct display in IE 10-.
+
+[hidden]
+  display: none
+
+/* Clearfix CSS
+
+.cf
+  &:before
+    content: " "
+
+    /* 1
+    display: table
+
+    /* 2
+
+  &:after
+    content: " "
+
+    /* 1
+    display: table
+
+    /* 2
+
+    clear: both
+
+  *zoom: 1
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+
+/* Common wrapper layout
+
+.dd-wrapper
+  display: table
+  width: 100%
+  height: 100%
+  position: relative
+  margin: 0 auto
+
+  .dd-center-content
+    display: table-cell
+    text-align: center
+    vertical-align: middle
+
+/* Title, Heading & Text
+
+.dd-title
+  font-family: 'Source Sans Pro', sans-serif
+  color: #393E46
+  display: inline-block
+
+/* Custom Row
+
+.container
+  width: 85%
+  margin: 0 auto
+
+.row
+  position: relative
+  margin: -15px 0
+
+.col-3
+  position: relative
+  width: calc(33.333% - 30px)
+  float: left
+  padding: 0 15px
+
+.col-4
+  position: relative
+  width: calc(25% - 30px)
+  float: left
+  padding: 0 15px
+
+.title
+  font-family: "Source Sans Pro", sans-serif
+  font-weight: 700
+  padding-bottom: 10px
+  color: #676c67
+
+/* Box
+
+.box
+  position: relative
+  border-top: 1px solid rgba(0, 0, 0, 0.15)
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+  padding: 50px 0
+
+  &:after
+    content: " "
+    display: table
+    clear: both
+
+@media (max-width: 768px)
+  .container
+    width: 95%
+
+  .col-3, .col-4
+    width: 100%
+    margin-bottom: 10px
+
+.form-group
+  position: relative
+
+.form-input
+  position: relative
+  font-family: "Source Sans Pro", sans-serif
+  font-weight: 600
+  width: 100%
+  height: 40px
+  border: none
+  padding: 0 10px
+  box-shadow: none
+  outline: none
+  -webkit-transition: all .5s ease
+  -moz-transition: all .5s ease
+  -ms-transition: all .5s ease
+  -o-transition: all .5s ease
+  transition: all .5s ease
+
+  &.smooth-corner
+    border-radius: 5px
+
+  &.round
+    border-radius: 50px
+
+  &.basic
+    border: 2px solid rgba(0, 0, 0, 0.15)
+
+    &:hover
+      border-color: rgba(0, 0, 0, 0.35)
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2)
+
+    &:focus
+      border-color: #4285F4
+      box-shadow: 0 0 10px rgba(66, 133, 244, 0.5)
+
+    &.shadow-inset
+      &:hover
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset
+
+      &:focus
+        box-shadow: 0 0 10px rgba(66, 133, 244, 0.5) inset
+
+  &.spread-shadow
+    border: 2px solid rgba(0, 0, 0, 0.15)
+    background: rgba(0, 0, 0, 0.1)
+
+    &:focus
+      background: #fff
+      box-shadow: 0 0 40px 5px rgba(0, 0, 0, 0.2)
+
+  &.glow-shadow
+    border: 0
+    background: rgba(0, 0, 0, 0.1)
+
+    &:focus
+      box-shadow: 0 0 0 2px #4285F4
+      background: #fff
+      border-color: #4285F4
+
+  &.border-dashed
+    border: 2px solid rgba(0, 0, 0, 0.15)
+    background: rgba(0, 0, 0, 0.1)
+
+    &:focus
+      border: 2px dashed #999
+      background: #fff
+      border-color: #4285F4
+
+  &.shutter
+    border: 2px solid rgba(0, 0, 0, 0.15)
+    box-shadow: 0 20px 0 0 #d5d5d5 inset, 0 -20px 0 0 #d5d5d5 inset
+
+    &:focus
+      box-shadow: none
+      border-color: rgba(0, 0, 0, 0.3)
+
+  &.shutter-in
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2)
+    background: transparent
+
+    &:focus
+      border-color: rgba(0, 0, 0, 0.3)
+      box-shadow: 0 -50px 0 #d5d5d5 inset
+
+  &.border-bottom
+    position: relative
+    background: transparent
+    padding: 0
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2)
+
+    ~ .border-bottom-animation
+      position: absolute
+      content: ""
+      width: 0
+      background: rgba(0, 0, 0, 0.2)
+      height: 2px
+      z-index: 99
+      -webkit-transition: all .5s ease
+      -moz-transition: all .5s ease
+      -ms-transition: all .5s ease
+      -o-transition: all .5s ease
+      transition: all .5s ease
+
+      &.left
+        left: 0
+        bottom: 0
+
+    &:focus
+      ~ .border-bottom-animation.left, ~ .border-bottom-animation.right, ~ .border-bottom-animation.center
+        background: #4285F4
+        width: 100%
+
+      ~ .border-bottom-animation.both-side
+        &:before, &:after
+          background: #4285F4
+          width: 50%
+
+    ~ .border-bottom-animation.right
+      right: 0
+      bottom: 0
+
+    ~ .border-bottom-animation.center
+      left: 0
+      right: 0
+      bottom: 0
+      margin: 0 auto
+
+    ~ .border-bottom-animation.both-side
+      height: 0px
+      width: 100%
+      left: 0
+      right: 0
+      bottom: 0
+
+      &:before, &:after
+        position: absolute
+        content: " "
+        bottom: 0
+        width: 0
+        height: 2px
+        -webkit-transition: all .5s ease
+        -moz-transition: all .5s ease
+        -ms-transition: all .5s ease
+        -o-transition: all .5s ease
+        transition: all .5s ease
+
+      &:before
+        left: 0
+
+      &:after
+        right: 0
+
+  &.border-animation
+    border: 2px solid rgba(0, 0, 0, 0.2)
+
+    ~ .border-line-animation
+      &.top-bottom
+        &:before, &:after
+          position: absolute
+          content: " "
+          right: 0
+          background: #4285F4
+          -webkit-transition: all .5s linear
+          -moz-transition: all .5s linear
+          -ms-transition: all .5s linear
+          -o-transition: all .5s linear
+          transition: all .5s linear
+
+      &.left-right
+        &:before, &:after
+          position: absolute
+          content: " "
+          right: 0
+          background: #4285F4
+          -webkit-transition: all .5s linear
+          -moz-transition: all .5s linear
+          -ms-transition: all .5s linear
+          -o-transition: all .5s linear
+          transition: all .5s linear
+
+      &.top
+        &:before, &:after
+          position: absolute
+          content: " "
+          right: 0
+          background: #4285F4
+          -webkit-transition: all .5s linear
+          -moz-transition: all .5s linear
+          -ms-transition: all .5s linear
+          -o-transition: all .5s linear
+          transition: all .5s linear
+
+      &.bottom
+        &:before, &:after
+          position: absolute
+          content: " "
+          right: 0
+          background: #4285F4
+          -webkit-transition: all .5s linear
+          -moz-transition: all .5s linear
+          -ms-transition: all .5s linear
+          -o-transition: all .5s linear
+          transition: all .5s linear
+
+      &.left
+        &:before, &:after
+          position: absolute
+          content: " "
+          right: 0
+          background: #4285F4
+          -webkit-transition: all .5s linear
+          -moz-transition: all .5s linear
+          -ms-transition: all .5s linear
+          -o-transition: all .5s linear
+          transition: all .5s linear
+
+      &.right
+        &:before, &:after
+          position: absolute
+          content: " "
+          right: 0
+          background: #4285F4
+          -webkit-transition: all .5s linear
+          -moz-transition: all .5s linear
+          -ms-transition: all .5s linear
+          -o-transition: all .5s linear
+          transition: all .5s linear
+
+      &.top-bottom
+        &:before, &:after
+          width: 0
+          height: 2px
+
+      &.top
+        &:before, &:after
+          width: 0
+          height: 2px
+
+      &.bottom
+        &:before, &:after
+          width: 0
+          height: 2px
+
+      &.left-right
+        &:before, &:after
+          width: 2px
+          height: 0
+
+      &.left
+        &:before, &:after
+          width: 2px
+          height: 0
+
+      &.right
+        &:before, &:after
+          width: 2px
+          height: 0
+
+    &.set-1
+      ~ .border-line-animation
+        &.top-bottom
+          &:before
+            bottom: 0
+            left: 0
+
+          &:after
+            top: 0
+            right: 0
+
+        &.left-right
+          &:before
+            left: 0
+            bottom: 0
+            left: 0
+
+          &:after
+            top: 0
+            right: 0
+            bottom: 0
+
+      &:focus ~ .border-line-animation
+        &.top-bottom
+          &:before, &:after
+            width: 100%
+
+        &.left-right
+          &:before, &:after
+            height: 100%
+
+    &.set-2
+      ~ .border-line-animation
+        &.top-bottom
+          &:before
+            left: 50%
+            bottom: 0
+
+          &:after
+            top: 0
+            left: 50%
+
+        &.left-right
+          &:before
+            top: 50%
+            left: 0
+
+          &:after
+            top: 50%
+            right: 0
+
+      &:focus ~ .border-line-animation
+        &.top-bottom
+          &:before, &:after
+            width: 100%
+            left: 0
+
+        &.left-right
+          &:before, &:after
+            height: 100%
+            top: 0
+
+    &.set-3
+      ~ .border-line-animation
+        &.top
+          &:before
+            left: 0
+            top: 0
+
+          &:after
+            right: 0
+            top: 0
+
+        &.bottom
+          &:before
+            left: 0
+            bottom: 0
+
+          &:after
+            right: 0
+            bottom: 0
+
+        &.left
+          &:before
+            left: 0
+            top: 0
+
+          &:after
+            left: 0
+            bottom: 0
+
+        &.right
+          &:before
+            right: 0
+            top: 0
+
+          &:after
+            right: 0
+            bottom: 0
+
+      &:focus ~ .border-line-animation
+        &.top
+          &:before, &:after
+            width: 100%
+
+        &.bottom
+          &:before, &:after
+            width: 100%
+
+        &.left
+          &:before, &:after
+            height: 100%
+
+        &.right
+          &:before, &:after
+            height: 100%
+
+    &.set-4
+      ~ .border-line-animation.top-bottom:before
+        left: 0
+        bottom: 0
+        transition-delay: 1.5s
+
+      &:focus
+        ~ .border-line-animation.top-bottom:before
+          transition-delay: 0s
+
+        ~ .border-line-animation.left-right:after
+          transition-delay: .5s
+
+        ~ .border-line-animation.top-bottom:after
+          transition-delay: 1s
+
+        ~ .border-line-animation
+          &.left-right:before
+            transition-delay: 1.5s
+
+          &.top-bottom
+            &:before, &:after
+              width: 100%
+
+          &.left-right
+            &:before, &:after
+              height: 100%
+
+      ~ .border-line-animation.left-right:after
+        right: 0
+        bottom: 0
+        transition-delay: 1s
+
+      ~ .border-line-animation.top-bottom:after
+        right: 0
+        top: 0
+        transition-delay: .5s
+
+      ~ .border-line-animation.left-right:before
+        left: 0
+        top: 0
+        transition-delay: 0
+
+/* Spread shadow
+
+/* Glow shadow
+
+/* Chagne Border
+
+/* Shutter
+
+/* Border bottom effects
+
+/* Border bottom left
+
+/* Border bottom right
+
+/* Border bottom center
+
+/* Border bottom both side
+
+/* Border Animations
+/* Style 1
+
+/* Set 2
+
+/* Set 3
+
+/* Set 4

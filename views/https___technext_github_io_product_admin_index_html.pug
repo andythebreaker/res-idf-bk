@@ -1,0 +1,595 @@
+extends layout
+
+block contentHEAD
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(content='IE=edge,chrome=1' http-equiv='X-UA-Compatible')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no')
+    meta(name='description' content='Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI.')
+    meta(name='keywords' content='Semantic-UI, Theme, Design, Template')
+    meta(name='author' content='PPType')
+    meta(name='theme-color' content='#ffffff')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='/dashboard/stylesheets/index.css' type='text/css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css' integrity='sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    link(rel='stylesheet' href='/stylesheets/bbwizerd.css' type='text/css')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    title Product Admin - Dashboard HTML Template
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,700')
+    // https://fonts.google.com/specimen/Roboto
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css')
+    //^^^^ link(rel='stylesheet' href='css/fontawesome.min.css')
+    // https://fontawesome.com/
+    link(rel='stylesheet' href='https://cdn.usebootstrap.com/bootstrap/4.1.3/css/bootstrap.min.css')
+    // https://getbootstrap.com/
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/gh/technext/product-admin/css/templatemo-style.min.css')
+    //https://github.com/technext/product-admin/blob/master/css/templatemo-style.css
+    //
+      Product Admin CSS Template
+      https://templatemo.com/tm-524-product-admin
+    style(type='text/css').
+      /* Chart.js */
+      @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+    style(type='text/css').
+      .dn{display:none;}
+
+block content
+    script.
+      document.body.id='reportsPage';
+    #home
+      nav.navbar.navbar-expand-xl
+        .container.h-100
+          a.navbar-brand(href='/main')
+            h1.tm-site-title.mb-0 電子資源
+          button.navbar-toggler.ml-auto.mr-0(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            i.fas.fa-bars.tm-nav-icon
+          #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mx-auto.h-100
+              if emt==="tab0"
+                li.nav-item
+                  a.nav-link.active(href='?tab=0')
+                    i.warehouse.icon
+                    |                                 校內資源
+                    span.sr-only (current)
+                li.nav-item
+                  a.nav-link(href='?tab=1')
+                    i.icon.fort.awesome
+                    |                                 校外資源
+                li.nav-item
+                  a.nav-link(href='?tab=2')
+                    i.linkify.icon
+                    |                                 常用連結
+              else if emt==="tab1"
+                li.nav-item
+                  a.nav-link(href='?tab=0')
+                    i.warehouse.icon
+                    |                                 校內資源
+                li.nav-item
+                  a.nav-link.active(href='?tab=1')
+                    i.icon.fort.awesome
+                    |                                 校外資源
+                    span.sr-only (current)
+                li.nav-item
+                  a.nav-link(href='?tab=2')
+                    i.linkify.icon
+                    |                                 常用連結
+              else if emt==="tab2"
+                li.nav-item
+                  a.nav-link(href='?tab=0')
+                    i.warehouse.icon
+                    |                                 校內資源
+                li.nav-item
+                  a.nav-link(href='?tab=1')
+                    i.icon.fort.awesome
+                    |                                 校外資源
+                li.nav-item
+                  a.nav-link.active(href='?tab=2')
+                    i.linkify.icon
+                    |                                 常用連結
+                    span.sr-only (current)
+              else
+                li.nav-item
+                  a.nav-link.active(href='#')
+                    i.fas.fa-tachometer-alt
+                    |                                 error!
+                    span.sr-only (current)
+              //li.nav-item.dropdown
+                a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                  i.fas.fa-cog
+                  span
+                    | Settings 
+                    i.fas.fa-angle-down
+                .dropdown-menu(aria-labelledby='navbarDropdown')
+                  a.dropdown-item(href='#') Profile
+                  a.dropdown-item(href='#') Billing
+                  a.dropdown-item(href='#') Customize
+            ul.navbar-nav
+              li.nav-item
+                a.nav-link.d-block(href='/')
+                  | &emsp;
+                  b 回首頁
+      .container.ui.fluid(style="margin-right:3vw;margin-left:3vw;")
+        .row
+          .col
+            p.text-white.mt-1.mb-1
+              | &emsp;
+              b &emsp;
+        // row
+        .row.tm-content-row
+          .dn.col-sm-12.col-md-12.col-lg-6.col-xl-6.tm-block-col
+            .tm-bg-primary-dark.tm-block
+              .chartjs-size-monitor(style='position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;')
+                .chartjs-size-monitor-expand(style='position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;')
+                  div(style='position:absolute;width:1000000px;height:1000000px;left:0;top:0')
+                .chartjs-size-monitor-shrink(style='position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;')
+                  div(style='position:absolute;width:200%;height:200%;left:0; top:0')
+              h2.tm-block-title Latest Hits
+              canvas#lineChart.chartjs-render-monitor(style='display: block; height: 390px; width: 640px;' width='800' height='487')
+          .dn.col-sm-12.col-md-12.col-lg-6.col-xl-6.tm-block-col
+            .tm-bg-primary-dark.tm-block
+              .chartjs-size-monitor(style='position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;')
+                .chartjs-size-monitor-expand(style='position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;')
+                  div(style='position:absolute;width:1000000px;height:1000000px;left:0;top:0')
+                .chartjs-size-monitor-shrink(style='position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;')
+                  div(style='position:absolute;width:200%;height:200%;left:0; top:0')
+              h2.tm-block-title Performance
+              canvas#barChart.chartjs-render-monitor(style='display: block; height: 390px; width: 640px;' width='800' height='487')
+          .dn.col-sm-12.col-md-12.col-lg-6.col-xl-6.tm-block-col
+            .tm-bg-primary-dark.tm-block.tm-block-taller
+              h2.tm-block-title Storage Information
+              #pieChartContainer(style='height: 300px;')
+                canvas#pieChart.chartjs-render-monitor(width='863' height='825' style='display: block; height: 300px; width: 314px;')
+          .dn.col-sm-12.col-md-12.col-lg-6.col-xl-6.tm-block-col
+            .tm-bg-primary-dark.tm-block.tm-block-taller.tm-block-overflow
+              h2.tm-block-title Notification List
+              .tm-notification-items
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Jessica
+                      |  and 
+                      b 6 others
+                      |  sent you new 
+                      a.tm-notification-link(href='#') product updates
+                      | . Check new orders.
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Oliver Too
+                      |  and 
+                      b 6 others
+                      |  sent you existing 
+                      a.tm-notification-link(href='#') product updates
+                      | . Read more reports.
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Victoria
+                      |  and 
+                      b 6 others
+                      |  sent you 
+                      a.tm-notification-link(href='#') order updates
+                      | . Read order information.
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Laura Cute
+                      |  and 
+                      b 6 others
+                      |  sent you 
+                      a.tm-notification-link(href='#') product records
+                      | .
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Samantha
+                      |  and 
+                      b 6 others
+                      |  sent you 
+                      a.tm-notification-link(href='#') order stuffs
+                      | .
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Sophie
+                      |  and 
+                      b 6 others
+                      |  sent you 
+                      a.tm-notification-link(href='#') product updates
+                      | .
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Lily A
+                      |  and 
+                      b 6 others
+                      |  sent you 
+                      a.tm-notification-link(href='#') product updates
+                      | .
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Amara
+                      |  and 
+                      b 6 others
+                      |  sent you 
+                      a.tm-notification-link(href='#') product updates
+                      | .
+                    span.tm-small.tm-text-color-secondary 6h ago.
+                .media.tm-notification-item
+                  .tm-gray-circle
+                    img.rounded-circle(src='https://picsum.photos/seed/picsum/80/80' alt='Avatar Image')
+                  .media-body
+                    p.mb-2
+                      b Cinthela
+                      |  and 
+                      b 6 others
+                      |  sent you 
+                      a.tm-notification-link(href='#') product updates
+                      | .
+                    span.tm-small.tm-text-color-secondary 6h ago.
+          .col-12.tm-block-col
+            .tm-bg-primary-dark.tm-block.tm-block-taller.tm-block-scroll(style='max-height:80vh')
+              if emt==="tab0"
+                h2.tm-block-title 校內資源 (有關編輯:編輯只能編輯「欄位」部分，檔案部分請一律重新上傳再刪除原本的東西)
+              else if emt==="tab1"
+                h2.tm-block-title 校外資源 (有關編輯:對於所有列，若流水號為粉紅色，該列之「附加檔案/超連結」為可直接編輯，請填寫完所有需求項目後，按下編輯鍵，這將會提交。若該列流水號非粉紅色，請填寫除了「附加檔案/超連結」的其他目標異動項目，再點擊編輯鍵，這將會提交除了「附加檔案/超連結」的項目。__若要編輯「附加檔案/超連結」項目，點擊該按鈕後進入文件上傳頁面，文件將複寫。)
+              else if emt==="tab2"
+                h2.tm-block-title 常用連結
+              else
+                h2.tm-block-title error!
+              table.table
+                thead
+                  if emt==="tab0"
+                    tr
+                      th(scope='col') 流水號
+                      th(scope='col') 名稱
+                      th(scope='col') 作者
+                      th(scope='col') 資源類型
+                      th(scope='col') 發布時間
+                      th(scope='col') 備註
+                      th(scope='col') 操作
+                  else if emt==="tab1"
+                    tr
+                      th(scope='col') 流水號
+                      th(scope='col') 名稱
+                      th(scope='col') 提供者
+                      th#ht2fr(scope='col') 類型
+                      th(scope='col') 發布時間
+                      th(scope='col') 備註
+                      th(scope='col') 附加檔案/超連結
+                      th(scope='col') 操作
+                  else if emt==="tab2"
+                    tr
+                      th(scope='col') 流水號
+                      th(scope='col') 網站名稱
+                      th(scope='col') 分類
+                      th(scope='col') 超連結
+                      th(scope='col') 操作
+                  else
+                    tr
+                      th error!
+                tbody
+                  if emt==="tab0"
+                    each eo, index in e3
+                      tr(data-dbno=eo.sn2)
+                        //如果編輯要重傳檔案，就直接重新增一份，把原本的刪掉，不然要重hash，不太合理
+                        th(scope='row')
+                          b= index+1
+                        td
+                          input.form-control(style="min-width:70px" id=`k${index}db1` type="text" value=eo.osn2)
+                        td
+                          input.form-control(style="min-width:70px" id=`k${index}db2` type="text" value=eo.provider2)
+                        td
+                          // Button trigger modal
+                          button.btn.btn-primary(style="padding:0px" id=`exampleModal${index}bton` type='button' data-toggle='modal' data-target=`#exampleModal${index}` data-firstclass=nqT(String(eo.c2)) data-secclass=nqT(String(eo.Textafterexternallinkother2)))= String(eo.c2)+' '+String(eo.Textafterexternallinkother2)
+
+                          // Modal
+                          .modal.fade(id=`exampleModal${index}` tabindex='-1' role='dialog' aria-labelledby=`exampleModal${index}Label` aria-hidden='true')
+                            .modal-dialog(role='document')
+                              .modal-content.text-dark
+                                .modal-header
+                                  h5.modal-title(id=`exampleModal${index}Label`) Modal title
+                                  button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                    span(aria-hidden='true') ×
+                                .modal-body
+                                  .input-group.mb-3
+                                    .input-group-append
+                                      span#basic-addon2.input-group-text 主類別
+                                    input.form-control.w-50(id=`exampleModal${index}i1` type="text" value=String(eo.c2))
+                                  .input-group.mb-3
+                                    .input-group-append
+                                      span#basic-addon2.input-group-text 子類別
+                                    input.form-control.w-50(id=`exampleModal${index}i2` type="text" value=String(eo.Textafterexternallinkother2))
+                                .modal-footer
+                                  button.btn.btn-secondary(type='button' data-dismiss='modal') 關閉
+                                  button.btn.btn-primary(type='button' onclick=`document.getElementById('exampleModal${index}bton').dataset.firstclass=$('#exampleModal${index}i1').val();document.getElementById('exampleModal${index}bton').dataset.secclass=$('#exampleModal${index}i2').val();$('#exampleModal${index}bton').text(String($('#exampleModal${index}i1').val())+String($('#exampleModal${index}i2').val()))`) 暫存
+
+                        td
+                          button.btn.btn-secondary(style="padding:0px" id=`d${index}b` data-db1=String(eo.yPublished_External2) data-db2=String(eo.mPublished_External2) data-db3=String(eo.dPublished_External2) type='button' data-container='body' data-toggle='popover' data-placement='top' data-idonfly=`popover${index}`)= String(eo.yPublished_External2)+'年'+String(eo.mPublished_External2)+'月'+String(eo.dPublished_External2)+'日'
+                          .d-none.datetimesetbox
+                            .input-group.mb-3
+                              //這是一個泡泡展開，需要這個html末端的泡泡fucn
+                              input.form-control.w-50(class=`d${index}b1` type="text" value=String(eo.yPublished_External2))
+                              .input-group-append
+                                span#basic-addon2.input-group-text 年
+                            .input-group.mb-3
+                              input.form-control.w-50(class=`d${index}b2` type="text" value=String(eo.mPublished_External2))
+                              .input-group-append
+                                span#basic-addon2.input-group-text 月
+                            .input-group.mb-3
+                              input.form-control.w-50(class=`d${index}b3` type="text" value=String(eo.dPublished_External2))
+                              .input-group-append
+                                span#basic-addon2.input-group-text 日
+                            .d-flex.bd-highlight.mb-3
+                              .p-2.flex-fill.bd-highlight
+                                button.btn.btn-secondary(type='button' onclick=`$('button[data-idonfly=popover${index}]').click()`) 關閉
+                              .p-2.flex-fill.bd-highlight
+                                button.btn.btn-primary(type='button' onclick=`var t=document.getElementById('d${index}b');t.dataset.db1=$('.d${index}b1').last().val();t.dataset.db2=$('.d${index}b2').last().val();t.dataset.db3=$('.d${index}b3').last().val();t.innerText=$('.d${index}b1').last().val()+'年'+$('.d${index}b2').last().val()+'月'+$('.d${index}b3').last().val()+'日'`) 暫存
+                        td
+                          input.form-control(style="min-width:70px" id=`k${index}db3` type="text" value=eo.Remarks_External2)
+                        td
+                          .tm-status-circle.moving
+                          button.ui.button(href="#" onclick=`$.ajax({url: 'ocr?id=${eo.id||'-1'}',type: 'DELETE',success: function(result) { window.location.href='/main/editR?tab=0'},error:function(result) { Swal.fire({  title: '錯誤!',  text: result,  icon: 'error',  confirmButtonText: 'Cool'});}});`)
+                            i.save.icon
+                            |   刪除
+                          button.ui.button(onclick=`var u='/main/ocrE?id=${eo.id}&a1=';u+=SimpleAndSecureURLByValueConversion($('#k${index}db1').val())+'&a2=';u+=SimpleAndSecureURLByValueConversion($('#k${index}db2').val())+'&a3='+SimpleAndSecureURLByValueConversion(document.getElementById('exampleModal${index}bton').dataset.firstclass)+'&a4='+SimpleAndSecureURLByValueConversion(document.getElementById('exampleModal${index}bton').dataset.secclass)+'&a5='+document.getElementById('d${index}b').dataset.db1+'&a6='+document.getElementById('d${index}b').dataset.db2+'&a7='+document.getElementById('d${index}b').dataset.db3+'&a8='+SimpleAndSecureURLByValueConversion($('#k${index}db3').val());console.log(u);window.location.href = u;`)
+                            i.save.icon
+                            |   編輯
+                  else if emt==="tab1"
+                    each eo, index in e2
+                      tr(data-dbno=eo.sn)
+                        //-索引區
+                        th(scope='row')
+                          if eo.urle.includes("://")
+                            b.ui.pink.message= index+1
+                          else
+                            b= index+1
+                          //.tm-status-circle.pending
+                          .pop2class(id=`pop2class${index}` style="display:none;")
+                            //TODO這裡有羅及BUG，因為alert會讀這裡的HTML，但是值是寫死的，所以使用者如果改2次，他會覺得好像沒改道，但是資料有變......"UI-DATA不同步"     但是反正預覽資料是對的，我就不改了        /**記得用https://www.w3schools.com/jsref/prop_text_defaultvalue.asp   **/
+                            h4.ui.teal.message 主類型
+                            input.form-control(class=`pop2class${index}da` value=eo.c)
+                            h4.ui.teal.message 子類型
+                            input.form-control(class=`pop2class${index}db` value=eo.Textafterexternallinkother)
+                            .pop2classsub(id=`pop2class${index}sub` style="display:none;")
+                              i.check.circle.icon
+                              p 暫存
+                        //-名稱~a1~$('DVP2A1T9${index}S1').val()
+                        td
+                          input.form-control(id=`DVP2A1T9${index}S1` value=eo.osn)
+                        //-提供者~a2~$('DVP2A1T9${index}S2').val()
+                        td
+                          input.form-control(id=`DVP2A1T9${index}S2` value=eo.provider)
+                        //-類別~a3、a4~document.getElementById('C2ABD${index}').dataset.ca、document.getElementById('C2ABD${index}').dataset.cb
+                        td(data-ca=eo.c data-cb=eo.Textafterexternallinkother id=`C2ABD${index}`)
+                          button.ui.button(id=`pop2class${index}d0` onclick=`Swal.fire({title: document.getElementById('ht2fr').innerHTML,icon: 'info',html:document.getElementById('pop2class${index}').innerHTML,showCloseButton: true,showCancelButton: false,focusConfirm: true,confirmButtonText:document.getElementById('pop2class${index}sub').innerHTML,confirmButtonAriaLabel: '暫存'}).then((result) => {/* Read more about isConfirmed, isDenied below */if (result.isConfirmed) {console.log('checkpoint');document.getElementById('C2ABD${index}').dataset.ca=$('.pop2class${index}da').last().val();document.getElementById('C2ABD${index}').dataset.cb=$('.pop2class${index}db').last().val();$('#pop2class${index}d0').text(String($('.pop2class${index}da').last().val())+' '+String($('.pop2class${index}db').last().val()));}/* else if (result.isDenied) {Swal.fire('Changes are not saved', '', 'info')}*/})`)
+                            | #{`${String(eo.c)+' '+String(eo.Textafterexternallinkother)}`}
+                        //-日期~a5、6、7~py($('D2F${index}').val())、pm($('D2F${index}').val())、pd($('D2F${index}').val())
+                        td
+                          //本來是附加到底下的行value=`${String(eo.yPublished_External)+'年'+String(eo.mPublished_External)+'月'+String(eo.dPublished_External)+'日'}` 
+                          textarea.ui.button(id=`D2F${index}` oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' style='padding:0px 0px 0px 0px; width :3vw; height: 100%; ' data-toggle=`datepicker${index}`)
+                          //| #{`${String(eo.yPublished_External)+'年\n'+String(eo.mPublished_External)+'月\n'+String(eo.dPublished_External)+'日\n'}`}
+                          .initDateF2(id=`D2F${index}data` data-inittovalue=`${String(eo.yPublished_External)+'年'+String(eo.mPublished_External)+'月'+String(eo.dPublished_External)+'日'}` data-idfa=eo.yPublished_External data-idfb=eo.mPublished_External data-idfc=eo.dPublished_External data-toggle=`datepicker${index}`)
+                        //-附註~a8~$('DVP2A1T9${index}S3').val()
+                        td
+                          input.form-control(id=`DVP2A1T9${index}S3` value=eo.Remarks_External)
+                        //-URL/DOCX/ECLX/~a9~W/PRAM!!!!!!!!!!!!!document.getElementById('fireMODurlDEC1P${index}')?'&a9='+String(document.getElementById('DVP2A1T9${index}S4').dataset.urle):''
+                        td(id=`DVP2A1T9${index}S4` data-urle=eo.urle)
+                          .tm-status-circle.moving
+                          if eo.urle.includes("://")
+                            .card(id=`fireMODurlDEC1P${index}` style="display:none;")
+                              .card(id=`fireMODurlDEC2P${index}` style="display:none;")
+                                i.close.icon
+                                |     關閉
+                              .ui.action.input
+                                input(class=`DVP2A1T9${index}S5` type='url' value=eo.urle)
+                                button.ui.teal.right.labeled.icon.button(onclick=`document.getElementsByClassName('DVP2A1T9${index}S5')[0].defaultValue=$('.DVP2A1T9${index}S5').last().val();$('.DVP2A1T9${index}S5').first().prop('value',$('.DVP2A1T9${index}S5').last().val());document.getElementById('DVP2A1T9${index}S4').dataset.urle=$('.DVP2A1T9${index}S5').last().val();`)
+                                  i.hdd.icon
+                                  |     暫存
+                            a.ui.button(id=`fireMODurlDEC0P${index}` href="#" onclick=`Swal.fire({title: document.getElementById('fireMODurlDEC0P${index}').innerHTML,icon: 'info',html:document.getElementById('fireMODurlDEC1P${index}').innerHTML,showCloseButton: false,showCancelButton: false,focusConfirm: true,confirmButtonText:document.getElementById('fireMODurlDEC2P${index}').innerHTML,confirmButtonAriaLabel: '關閉!',})`)
+                              i.linkify.icon
+                              |   編輯外部超連結
+                          else
+                            if eo.urle.includes("/ero?")
+                              a.ui.button(href=`/main/ero?eroID=${eo.id}` title="excel upload")
+                                i.external.alternate.icon
+                                |   編輯內部附加文件
+                            else if eo.urle.includes("/inner?")
+                              a.ui.button(href=`/main/docx?ic=es&id=${eo.id}` title="docx upload")
+                                i.external.alternate.icon
+                                |   編輯內部附加文件
+                        td
+                          a.ui.button(href="#" onclick=`$.ajax({url: 'fcr?id=${eo.id||'-1'}',type: 'DELETE',success: function(result) { window.location.href='/main/editR?tab=1'},error:function(result) { Swal.fire({  title: '錯誤',  text: result,  icon: 'error',  confirmButtonText: 'Cool'});}});`)
+                            i.external.alternate.icon
+                            |   刪除
+                          button.ui.button(onclick=`var u='/main/P2Ee?id=${eo.id}&a1=';u+=SimpleAndSecureURLByValueConversion($('#DVP2A1T9${index}S1').val())+'&a2=';u+=SimpleAndSecureURLByValueConversion($('#DVP2A1T9${index}S2').val())+'&a3='+SimpleAndSecureURLByValueConversion(document.getElementById('C2ABD${index}').dataset.ca)+'&a4='+SimpleAndSecureURLByValueConversion(document.getElementById('C2ABD${index}').dataset.cb)+'&a5='+py($('#D2F${index}').val())+'&a6='+pm($('#D2F${index}').val())+'&a7='+pd($('#D2F${index}').val())+'&a8='+SimpleAndSecureURLByValueConversion($('#DVP2A1T9${index}S3').val())+(document.getElementById('fireMODurlDEC1P${index}')?'&a9='+SimpleAndSecureURLByValueConversion(String(document.getElementById('DVP2A1T9${index}S4').dataset.urle)):'');console.log(u);window.location.href = u;`)  
+                            i.save.icon
+                            |   編輯
+                  else if emt==="tab2"
+                    each eo, index in e1
+                      tr(data-dbno=eo.no)
+                        th(scope='row')
+                          b= index+1
+                          //.tm-status-circle.pending
+                        td
+                          input.form-control(id=`erl${index}db1` type="text" value=eo.name) 
+                        td
+                          input.form-control(id=`erl${index}db2` type="text" value=eo.subcategory)
+                        td
+                          input.form-control(id=`erl${index}db3` type="text" value=eo.url)
+                        td
+                          .tm-status-circle.moving
+                          a.ui.button(id=`erl${index}db0` href="#" onclick=`$.ajax({url: 'frequentlyUsedLinks?id=${eo.id||'-1'}',type: 'DELETE',success: function(result) { window.location.href='/main/editR?tab=2'},error:function(result) { Swal.fire({  title: '錯誤',  text: result,  icon: 'error',  confirmButtonText: 'Cool'});}});`)
+                            i.external.alternate.icon
+                            |   刪除
+                          a.ui.button(href="#" onclick=` $.post("/main/e1", {no: '${eo.no}',name: $('#erl${index}db1').val(),subcategory: $('#erl${index}db2').val(),url: $('#erl${index}db3').val(),submit: '送出'}, (res) => {if (res.includes('資料寫入成功!')) {console.log('OK');document.getElementById('erl${index}db0').click();} else {console.log('X');Swal.fire('錯誤','資料寫入錯誤,保持原始狀態','error');} });`)
+                            i.external.alternate.icon
+                            |   編輯
+                  else
+                    tr
+                      th error!
+      //input#zzz(data-toggle='datepicker')
+      //textarea(data-toggle='datepicker')
+      //div(data-toggle='datepicker')
+      footer.tm-footer.row.tm-mt-small
+        .col-12.font-weight-light
+          p.text-center.text-white.mb-0.px-4.small
+            | 資料庫最後更新時間:
+            b= ly
+            //a.tm-footer-link(rel='nofollow noopener' href='https://templatemo.com') Template Mo
+    script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+    // https://jquery.com/download/
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js')
+    // https://momentjs.com/
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js' integrity='sha512-GsqF810cNwHMCDELTwi3YgWIBwKYQlvC1WTAJ6fk80rtB6zN3IWdpoQujBQCuOMOxXXksEWwE0k4Lrb+N87DZQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    // http://www.chartjs.org/docs/latest/
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js')
+    //2.11.4not ok(https://getbootstrap.com/docs/4.1/components/popovers/)
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js' integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy' crossorigin='anonymous')
+    // https://getbootstrap.com/
+    script(src='https://cdn.jsdelivr.net/gh/technext/product-admin/js/tooplate-scripts.js')
+    script.
+      Chart.defaults.global.defaultFontColor = 'white';
+      let ctxLine,
+      ctxBar,
+      ctxPie,
+      optionsLine,
+      optionsBar,
+      optionsPie,
+      configLine,
+      configBar,
+      configPie,
+      lineChart;
+      barChart, pieChart;
+      // DOM is ready
+      $(function () {
+      drawLineChart(); // Line Chart
+      drawBarChart(); // Bar Chart
+      drawPieChart(); // Pie Chart
+      $(window).resize(function () {
+      updateLineChart();
+      updateBarChart();
+      });
+      });
+      $(function () {//https://getbootstrap.com/docs/4.1/components/popovers/
+      //泡泡fucn
+      $('[data-toggle="popover"]').popover({
+      html: true,
+      content:function (){var stuff = $( this ).parent().children('.datetimesetbox');var tmp=stuff[0].innerHTML;return tmp;
+      }
+      });
+      });
+    script(src='//cdn.jsdelivr.net/npm/sweetalert2@11')
+    script(src='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js' integrity='sha256-aHuHTU7SdMUuRBFzJX+PRkbfy9kd0uGHS8uc4M/NVBo=' crossorigin='anonymous')
+    script(src='/rs/index.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js' integrity='sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+
+    script.
+      function setKeywordText(domobjSEL,text) {
+      //$(`#${domobjSEL}`).trigger('keypress');
+      var el = document.getElementById(domobjSEL);
+      el.value = text;
+      el.style.height = "";el.style.height = el.scrollHeight + "px"
+      var evt = document.createEvent("Events");
+      evt.initEvent("change", true, true);
+      el.dispatchEvent(evt);
+      }
+      var aidf=document.getElementsByClassName("initDateF2");
+      for (var i=0; i<aidf.length;i++){
+      $(`[data-toggle="datepicker${i}"]`).datepicker({
+      format: 'yyyy年mm月dd日',date: new Date(aidf[i].dataset.idfa, aidf[i].dataset.idfb, aidf[i].dataset.idfc) // Or '02/14/2014'
+      });
+      setKeywordText(`D2F${i}`,document.getElementById(`D2F${i}data`).dataset.inittovalue);
+      }
+      function py(st){
+      const regex = /^(\d{2,4})年/g;
+      const str = st;
+      let m;
+      while ((m = regex.exec(str)) !== null) {
+      // This is necessary to avoid infinite loops with zero-width matches
+      if (m.index === regex.lastIndex) {
+      regex.lastIndex++;
+      }
+      var tmp_m="";
+      // The result can be accessed through the `m`-variable.
+      m.forEach((match, groupIndex) => {
+      console.log(`Found match, group ${groupIndex}: ${match}`);
+      tmp_m= match;
+      });
+      return tmp_m;
+      }
+      }
+      function pm(st){
+      const regex = /年(\d{1,2})月/g;
+      const str = st;
+      let m;
+      while ((m = regex.exec(str)) !== null) {
+      // This is necessary to avoid infinite loops with zero-width matches
+      if (m.index === regex.lastIndex) {
+      regex.lastIndex++;
+      }
+      // The result can be accessed through the `m`-variable.
+      m.forEach((match, groupIndex) => {
+      console.log(`Found match, group ${groupIndex}: ${match}`);
+      tmp_m= match;
+      });
+      return tmp_m;
+      }
+      }
+      function pd(st){
+      const regex = /(\d{1,2})日$/g;
+      const str = st;
+      let m;
+      while ((m = regex.exec(str)) !== null) {
+      // This is necessary to avoid infinite loops with zero-width matches
+      if (m.index === regex.lastIndex) {
+      regex.lastIndex++;
+      }
+      // The result can be accessed through the `m`-variable.
+      m.forEach((match, groupIndex) => {
+      console.log(`Found match, group ${groupIndex}: ${match}`);
+      tmp_m= match;
+      });
+      return tmp_m;
+      }
+      }
+      function SimpleAndSecureURLByValueConversion(strii){
+      console.log(strii);
+      const regex = /[\?\=\&]/g;
+      const subst = ` `;
+      var stri=String(strii);
+      var str=stri?stri:"";
+      // The substituted value will be contained in the result variable
+      const result = str.replace(regex, subst);
+      console.log('Substitution result: ', result);
+      return result;
+      }
+      /**TODO
+      * 補充一點，這一頁要新增所有項目順序調整的功能，這部分尚未實作!!
+      */
+

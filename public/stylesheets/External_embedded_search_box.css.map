@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "External_embedded_search_box.css",
+	"sources": [
+		"External_embedded_search_box.sass"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,8BAA8B,CAAC,CAAC,AAAA,YAAY,CAAC;EAC3C,OAAO,EAAE,IAAI,GAAG;;AAElB,AAAA,GAAG,AAAA,KAAK,CAAC,OAAO,AAAA,OAAO,CAAC;EACvB,aAAa,EAAE,CAAC,GAAG"
+}

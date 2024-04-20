@@ -1,0 +1,130 @@
+extends layout
+
+block contentHEAD
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(content='IE=edge,chrome=1' http-equiv='X-UA-Compatible')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no')
+    meta(name='description' content='Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI.')
+    meta(name='keywords' content='Semantic-UI, Theme, Design, Template')
+    meta(name='author' content='PPType')
+    meta(name='theme-color' content='#ffffff')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='/dashboard/stylesheets/journal.css' type='text/css')
+    link(rel='stylesheet' href='/stylesheets/bbwizerd.css' type='text/css')
+    style.
+        @import url('/dashboard/stylesheets/customStyle.css');
+    style.
+        @import url('/jumbotron/stylesheets/customStyle.css');
+    style.
+        #b64data{
+        width:100%;
+        }
+        a { text-decoration: none }
+        #drop-zone{
+        background: white;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        z-index: -1;
+        }
+        #drop-zone p, #drop-zone svg { pointer-events: none }
+        #drop-zone svg { margin-right: 5px }
+        .execl_clear { display: none }
+    link(rel='stylesheet' href='/stylesheets/External_embedded_search_box.css' type='text/css')
+
+block content
+    #isUSER(style="display:none") #{isUSER}
+    include includes/navbar.pug
+    .ui.main.container
+      .ui.padded.grid
+        if isUSER!=='no'
+          #sidebar.two.wide.tablet.only.two.wide.computer.only.column
+            .ui.vertical.fluid.tabular.menu
+              // show all...etc
+              a.item(class=alpha === "1" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=1`") 現期期刊
+              a.item(class=alpha === "0" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]") Code Tip
+              a.item(style="display:none;" class=alpha === "2" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=2`") 電子期刊
+              a.item(style="display:none;" class=alpha === "3" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=3`") 紙本期刊
+              a.item(style="display:none;" class=(alpha === "0" ? "active" : "") onclick='$(".Viewbycategory").slideToggle()') 按類別檢視
+              //20220310更，按客戶需求^^^^^^^^^^
+              .ui.hidden.divider
+              a.item(style="display:none;")
+                .ui.violet.message 按英文字母開頭檢視
+              each Ea2z in a2z
+                //-注意:不可用int當索引
+                if Ea2z == alpha
+                  a.item.active(onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=${event.target.innerText}`")= Ea2z
+                else
+                  a.item(onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=${event.target.innerText}`")= Ea2z
+              // show eng...etc
+              .ui.hidden.divider
+              // show ch...etc
+        #mobilemenu.ui.mobile.only.padded.grid
+          .ui.compact.menu
+            .ui.simple.dropdown.item 
+              #menutxt 選擇目錄
+              i.dropdown.icon 
+              .menu.menubar
+                a.item(class=alpha === "1" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=1`") 現期期刊
+                a.item(class=alpha === "0" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]") Code Tip
+                a.item(style="display:none;" class=alpha === "2" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=2`") 電子期刊
+                a.item(style="display:none;" class=alpha === "3" ? "active" : "" data-toggle='tab' onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=3`") 紙本期刊
+                a.item(style="display:none;" class=(alpha === "0" ? "active" : "") onclick='$(".Viewbycategory").slideToggle()') 按類別檢視
+                .ui.hidden.divider
+
+                each Ea2z in a2z
+                  //-注意:不可用int當索引
+                  if Ea2z == alpha
+                    a.item.active(onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=${event.target.innerText}`")= Ea2z
+                  else
+                    a.item(onclick="window.location.href=window.location.href.split( '?' )[0]+`?alpha=${event.target.innerText}`")= Ea2z
+        #content.sixteen.wide.mobile.fourteen.wide.tablet.fourteen.wide.computer.right.floated.column
+          .ui.padded.grid
+            //20220310更，按客戶需求VVVVVVVVVVVVVVVVVVVVV
+            .Viewbycategory.ui.hidden.section.divider(style='display:none;')
+            .row
+              h1.ui.huge.dividing.header Code Tip
+            .row
+              // 底下這坨東西是設定表格應用程式的語言，消失吧!
+              #toolbar
+                button#remove.ui.red.button(disabled='')
+                  i.fa.fa-trash
+                  |  Delete
+              // data-detail-view='true'把這行加到下方表格中，可以顯示加號
+              table#table(data-toolbar='#toolbar' data-search='true' data-show-refresh='true' data-show-toggle='true' data-show-fullscreen='true' data-show-columns='true' data-show-columns-toggle-all='true' data-show-export='true' data-click-to-select='true' data-detail-formatter='detailFormatter' data-minimum-count-columns='2' data-show-pagination-switch='true' data-pagination='true' data-id-field='id' data-page-list='[10, 25, 50, 100, all]' data-show-footer='true' data-side-pagination='true' data-url=`${jjsonURL}` data-response-handler='responseHandler')
+              //上一行的data-side-pagination='true'這個選項如果改成server就會把所有的搜尋條件轉成get參數，然後附加到json url上
+    #aLotOFjs(style='display: none;')
+      // 請注意:所有script的順序都是嚴格要求的
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+      script(src='https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js')
+      script(src='https://kit.fontawesome.com/8d41246ac0.js' crossorigin='anonymous')
+      script(src='https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js')
+      script(src='/dashboard/js/app_table.js')
+      script(src='/dashboard/js/index.js')
+      script.
+        function table_user(){
+        if(document.getElementById('isUSER').innerText==='yes'){
+        document.querySelector('.export.ui.button.dropdown').style.display = 'none';
+        document.querySelector('[data-field="updateTime"]').parentElement.style.display = 'none';
+        document.querySelector('[data-field="existTime"]').parentElement.style.display = 'none';
+        document.querySelector('[data-field="operate"]').parentElement.style.display = 'none';
+        document.querySelector('[data-field="id"]').parentElement.style.display = 'none';
+        }else{
+        $('#sbSlideToggle').click();
+        $('.Viewbycategory').hide();//TODO注意:在維護模式下，不可用資料分類
+        }
+        }
+

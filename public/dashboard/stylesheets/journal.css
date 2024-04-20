@@ -1,0 +1,18 @@
+.ui.mobile.only.grid .ui.menu .ui.vertical.menu {
+    display: none;
+}
+
+#sidebar{
+    height: 650px;
+    overflow-y: auto;
+    direction:rtl; 
+}
+
+.ui.simple.dropdown:hover > .menu{
+    height: 300px;
+    overflow-y: auto;
+}
+
+#content .ui.dividing.header {
+    width: 100%;
+}

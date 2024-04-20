@@ -1,0 +1,124 @@
+extends layout
+
+block contentHEAD
+  meta(charset='utf-8')
+  meta(content='IE=edge,chrome=1' http-equiv='X-UA-Compatible')
+  meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no')
+  meta(name='description' content='Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI.')
+  meta(name='keywords' content='Semantic-UI, Theme, Design, Template')
+  meta(name='author' content='PPType')
+  meta(name='theme-color' content='#ffffff')
+  //title Login Template for Semantic-UI
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+  style(type='text/css').
+    body {
+    background-color: #dadada;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: grayscale;
+    }
+    body > .ui.grid {
+    height: 100%;
+    }
+    .column {
+    max-width: 450px;
+    }
+
+block content
+  header
+    link(rel='stylesheet', href='/stylesheets/reg.css')
+    #error_msg_gui_group.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;')
+      - if(var_jade_err_msg_show==true) {
+          #error_msg_gui_start.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') yes
+          #error_msg_gui_text_1.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') #{var_jade_error_msg_gui_text_1}
+          //#error_msg_gui_text_1(style='display: none;') 錯誤
+          #error_msg_gui_text_2.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') #{var_jade_error_msg_gui_text_2}
+          #error_msg_gui_word_part_color_1.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') red
+          #error_msg_gui_word_part_color_2.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') black
+      - } else {
+          #error_msg_gui_start.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') no
+          #error_msg_gui_word_part_color_1.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') black
+          #error_msg_gui_word_part_color_2.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') black
+          #error_msg_gui_text_1.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') this is a error msg_1
+          #error_msg_gui_text_2.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') this is a error msg_2
+      - }
+      #error_msg_gui_blank_part_color.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;') white
+      #error_msg_gui_close.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;')
+      #error_msg_gui_init_msg_if_yes.error_msg_gui_group_class.loginAndRegistrationDataModule(style='display: none;')
+  .ui.middle.aligned.center.aligned.grid
+    .column
+      h2.ui.teal.center.aligned.header
+        img#magicreg.image(src='/login/admin_control_panel_icon_150307.svg')
+        |  Log-in to your
+        |           account
+      form#login_page.ui.large.form.loginAndRegistrationDataModule
+        // width="71.43%"
+        img#upload_img_using_logo.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/logo.svg' style='position:relative; height:30vh; top: 0%;')
+        #gray_block.ui.stacked.segment.loginAndRegistrationDataModule
+          .field.login_bar.disp_for_mod.user_input.loginAndRegistrationDataModule
+            //img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/login_bar.svg')
+            input.input_type_text.loginAndRegistrationDataModule(type='text' name='user_name' placeholder='名稱' onfocus="this.placeholder = ''" onblur="this.placeholder = '名稱'")
+          .field.login_bar.user_input.loginAndRegistrationDataModule
+            //img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/login_bar.svg')
+            .ui.left.icon.input
+              i.user.icon
+              input.input_type_text.loginAndRegistrationDataModule(type='text' name='account' placeholder='帳號' onfocus="this.placeholder = ''" onblur="this.placeholder = '帳號'")
+          .field.login_bar.user_input.loginAndRegistrationDataModule
+            //img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/login_bar.svg')
+            .ui.left.icon.input
+              i.lock.icon
+              input.input_type_text.loginAndRegistrationDataModule(type='password' name='password' placeholder='密碼' onfocus="this.placeholder = ''" onblur="this.placeholder = '密碼'")
+          .field.login_bar.disp_for_mod.user_input.loginAndRegistrationDataModule
+            //img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/login_bar.svg')
+            input.input_type_text.loginAndRegistrationDataModule(type='password' name='password_confirm' placeholder='再輸入一次密碼' onfocus="this.placeholder = ''" onblur="this.placeholder = '再輸入一次密碼'")
+          .login_bar.loginAndRegistrationDataModule
+            // value=""
+            button#login_button.loginAndRegistrationDataModule.ui.fluid.large.button.teal
+              img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/login_button.svg' width='100%' z-index='3')
+              #login_button_txt_fix.loginAndRegistrationDataModule(style='color:#FEFEFE;') 註冊
+          #error_msg_obj.ui.error.message.loginAndRegistrationDataModule
+        #community_login.loginAndRegistrationDataModule
+          #fb_login.button.loginAndRegistrationDataModule
+            img.loginAndRegistrationDataModule(href="/auth/facebook" src="../login/if_you_donT_add_this_The_front_end_will_spray_wrong/facebook_login.svg" border="0" alt="" width="100%" height="100%")
+          #line_login.button.loginAndRegistrationDataModule
+            img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/line_login.svg' width='100%' height='100%')
+        #cre_acc_log_fk_bton.loginAndRegistrationDataModule.ui.message
+          #cre_acc_log_fk_bton_inner_txt.loginAndRegistrationDataModule 點我登入
+  script.
+    window.onload = function() {
+    document.getElementById("login_page").onsubmit = function() {
+    return false;
+    };
+    };
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js')
+  //#error_msg_obj.loginAndRegistrationDataModule
+  canvas#justaimg.loginAndRegistrationDataModule(width='320' height='320')
+  #status.loginAndRegistrationDataModule(style="display:none;")
+  button#logout.loginAndRegistrationDataModule(style="display:none;") log_out
+  a#passworddriventimeoriented.loginAndRegistrationDataModule(style="display:none;") #{ successes }
+  button#add_an_user.loginAndRegistrationDataModule(style="display:none;") add_an_user
+  button#add_an_user2.loginAndRegistrationDataModule(style="display:none;") add_an_user2
+  input#fileinput.loginAndRegistrationDataModule(type='file' style="display:none;")
+  input#btnLoad.loginAndRegistrationDataModule(type='button' value='Load' onclick='handleFileSelect();' style="display:none;")
+  #editor.loginAndRegistrationDataModule(style="display:none;")
+  #editor_base64_fin.loginAndRegistrationDataModule(style="display:none;") -1
+  #window_clearInterval_timeoutID.loginAndRegistrationDataModule
+  #waiting_block.loginAndRegistrationDataModule(style='display:none;')
+    #waiting_gray.loginAndRegistrationDataModule
+    #waiting_logo.loginAndRegistrationDataModule
+      img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/loading.svg' height='100%')
+  #loading_logo.loginAndRegistrationDataModule
+    img.loginAndRegistrationDataModule(src='../login/if_you_donT_add_this_The_front_end_will_spray_wrong/loading.svg')
+  #picture.loginAndRegistrationDataModule(style="display:none;")
+  #fb-root.loginAndRegistrationDataModule(style="display:none;")
+  button#disp_mod.loginAndRegistrationDataModule(style="display:none;") #{ do_you_want_to_log_in_or_register }
+  script(src='./../javascripts/reg.js')
+  script(src='./../javascripts/index_err_msg.js')
+  script.
+    document.getElementById('cre_acc_log_fk_bton').style.display = 'none';
+    document.getElementById('magicreg').addEventListener('click', function (evt) {
+    if (evt.detail === 3) {
+    console.log('triple click!');
+    document.getElementById('cre_acc_log_fk_bton').style.display = 'block';
+    }
+    });

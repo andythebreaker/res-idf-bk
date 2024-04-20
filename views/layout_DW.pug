@@ -1,0 +1,50 @@
+doctype html
+//[if lt IE 7]> <html class="ie6 oldie"> <![endif]
+//[if IE 7]>    <html class="ie7 oldie"> <![endif]
+//[if IE 8]>    <html class="ie8 oldie"> <![endif]
+//[if gt IE 8]><!
+html(lang='en' class="")
+head
+  //<![endif]
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  title 未命名文件
+  link(href='/dw/boilerplate.css' rel='stylesheet' type='text/css')
+  //
+    若要深入了解檔案頂端 html 標籤周圍的條件式註解:
+    paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
+    如果您使用自訂的 Modernizr 組建 (http://www.modernizr.com/)，請執行下列動作:
+    * 在這裡將連結插入您的 js
+    * 將下列連結移至 html5shiv
+    * 將「no-js」類別新增至頂端的 html 標籤
+    * 如果您在 Modernizr 組建中包含 MQ Polyfill，也可以將連結移至 respond.min.js 
+  //
+    [if lt IE 9]
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]
+  script(src='/dw/respond.min.js')
+  link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/main_page_back.css')
+  block contentHEAD
+
+body(topmargin='5vh')
+  if window_location_href_main
+    button#main_page_back_btn(onclick='window.location.href = "/main";' title='Go to top') 回後台首頁
+  block content
+  //下方script是複製的
+  script.
+    WebFontConfig = {
+    custom: {
+    //families: ['DFYuan-W5-WIN-BF'],
+    //urls: ['/stylesheets/fonts.css']
+    families: ['Noto Sans TC'],
+    urls: ['https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional']
+    }
+    };
+    (function (d) {
+    var wf = d.createElement('script'), s = d.scripts[0];
+    wf.async = true;//非同步方式載入.js
+    wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+    s.parentNode.insertBefore(wf, s);
+    })(document);
+  script(src='//cdn.jsdelivr.net/npm/sweetalert2@11')

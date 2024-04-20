@@ -1,0 +1,121 @@
+/*
+https://gist.githubusercontent.com/gokulkrishh/242e68d1ee94ad05f488/raw/c6dbc8ecc81d24c2eaf901de7fd376161fb12518/media-query.css
+*/
+
+/*!1450*900
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
+    /* CSS */
+    .swiper-wrapper{
+        height:50vh;
+    }
+    .swipe_hight_BGCRTL{
+        height:50vh;
+    }
+
+  }
+  
+  /*!1111*850
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+  
+  @media (min-width: 1025px) and (max-width: 1280px) {
+    
+    /* CSS */
+    .swiper-wrapper{
+        height:50vh;
+    }
+    .swipe_hight_BGCRTL{
+        height:50vh;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    
+    /* CSS */
+    .swiper-wrapper{
+        height:50vh;
+    }
+    .swipe_hight_BGCRTL{
+        height:50vh;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+  
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    
+    /* CSS */
+    .swiper-wrapper{
+        height:38vh;
+    }
+    .swipe_hight_BGCRTL{
+        height:38vh;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    
+    /* CSS */
+    .swiper-wrapper{
+        height:38vh;
+    }
+    .swipe_hight_BGCRTL{
+        height:38vh;
+    }
+    
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+    
+    /* CSS */
+    .swiper-wrapper{
+        height:40vh;
+    }
+    .swipe_hight_BGCRTL{
+        height:40vh;
+    }
+    .swiper-wrapper h1.ui.huge.header{
+        font-size:3vh;
+    }
+    .swiper-wrapper p{
+        font-size:2vh;
+    }
+    .NavigationBar h1{
+        font-size:2vh;
+    }
+    .section.one .ui.segment {
+        box-shadow: none;
+        height: 200px;
+    }
+    .section.one .ui.segment i.icon {
+        font-size: 4vh;
+    }
+    
+  }

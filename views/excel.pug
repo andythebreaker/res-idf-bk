@@ -1,0 +1,611 @@
+extends layout
+
+block contentHEAD
+    meta(http-equiv='Content-Type' content='text/html; charset=UTF-8')
+    meta(charset='utf-8')
+    meta(content='IE=edge,chrome=1' http-equiv='X-UA-Compatible')
+    meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no')
+    meta(name='description' content='Semantic-UI-Forest, collection of design, themes and templates for Semantic-UI.')
+    meta(name='keywords' content='Semantic-UI, Theme, Design, Template')
+    meta(name='author' content='PPType')
+    meta(name='theme-color' content='#ffffff')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.css' type='text/css')
+    link(rel='stylesheet' href='/newbookpage/stylesheets/index.css' type='text/css')
+    style.
+        @import url('/newbookpage/stylesheets/customStyle.css');
+    style.
+        #b64data{
+        width:100%;
+        }
+        a { text-decoration: none }
+        #drop-zone{
+        background: white;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        z-index: -1;
+        }
+        #content{
+          padding-top:60px;
+        }
+        #sidebar{
+          padding-top:60px;
+
+        }
+        #drop-zone p, #drop-zone svg { pointer-events: none }
+        #drop-zone svg { margin-right: 5px }
+        .execl_clear { display: none }
+    link(rel='stylesheet' href='/stylesheets/External_embedded_search_box.css' type='text/css')
+
+block content
+  - if(isADMIN==true) {
+    #Data_manipulation_error.ui.basic.modal
+      //TODO我也不知道未啥這個模組的好的按鈕與關閉按鈕啥都不用設定就可以關閉，傻眼
+      //叫用$(".ui.basic.modal").modal("show");
+      .ui.icon.header
+        i.archive.icon
+        |     錯誤
+      .content
+        p
+          | 資料操作錯誤
+      .actions
+        .ui.red.basic.cancel.inverted.button
+          i.remove.icon
+          |       關閉
+        .ui.green.ok.inverted.button
+          i.checkmark.icon
+          |       好的
+    // xlsx.js (C) 2013-present  SheetJS http://sheetjs.com
+    // vim: set ts=2:
+    //title Dashboard Template for Semantic-UI
+    //link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+    pre
+      a.execl_clear(href='http://sheetjs.com') SheetJS Data Preview Live Demo
+      h6.execl_clear (Base64 text works back to IE6; drag and drop works back to IE10)
+      a.execl_clear(href='https://github.com/SheetJS/js-xlsx') Source Code Repo
+      a.execl_clear(href='https://github.com/SheetJS/js-xlsx/issues') Issues?  Something look weird?  Click here and report an issue
+      h6.execl_clear Output Format: 
+      select#make_it_html.execl_clear(name='format' onchange='setfmt()')
+        option(value='csv' selected='')  CSV
+        option(value='json')  JSON
+        option(value='form')  FORMULAE
+        option(value='html')  HTML
+        option(value='xlsx')  XLSX
+      br.execl_clear
+      input#xlf.execl_clear(type='file' name='xlfile')
+      textarea#b64data.execl_clear ... or paste a base64-encoding here
+      input#dotext.execl_clear(type='button' value='Click here to process the base64 text' onclick='b64it();')
+      br.execl_clear
+      b.execl_clear Advanced Demo Options:
+      h6.execl_clear Use Web Workers: (when available) 
+      input.execl_clear(type='checkbox' name='useworker' checked='')
+      h6.execl_clear Use readAsBinaryString: (when available) 
+      input.execl_clear(type='checkbox' name='userabs' checked='')
+    pre#out.execl_clear
+    #htmlout.execl_clear
+    #drop-zone.execl_clear
+      svg.execl_clear(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24')
+        path.execl_clear(d='M17 13h-10v-1h10v1zm0-4h-10v1h10v-1zm0-3h-10v1h10v-1zm-15-1v-5h6v2h-4v3h-2zm8-5v2h4v-2h-4zm6 2h4v3h2v-5h-6v2zm6 5h-2v4h2v-4zm-20 10h2v-4h-2v4zm18-4v.543c0 4.107-6 2.457-6 2.457s1.518 6-2.638 6h-1.362v2h2.189c3.163 0 9.811-7.223 9.811-9.614v-1.386h-2zm-18-2h2v-4h-2v4zm2 11v-3h-2v5h6v-2h-4z')
+      p.execl_clear Drop a spreadsheet file here to see sheet data
+    br.execl_clear
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/shim.min.js' integrity='sha512-nPnkC29R0sikt0ieZaAkk28Ib7Y1Dz7IqePgELH30NnSi1DzG4x+envJAOHz8ZSAveLXAHTR3ai2E9DZUsT8pQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js' integrity='sha512-gtII6Z4fZyONX9GBrF28JMpodY4vIOI0lBjAtN/mcK7Pz19Mu1HHIRvXH6bmdChteGpEccxZxI0qxXl9anY60w==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    script.
+      /*jshint browser:true */
+      /* eslint-env browser */
+      /* eslint no-use-before-define:0 */
+      /*global Uint8Array, Uint16Array, ArrayBuffer */
+      /*global XLSX */
+      var X = XLSX;
+      var XW = {
+      /* worker message */
+      msg: 'xlsx',
+      /* worker scripts */
+      worker: '../excel/xlsxworker.js'
+      /*上面那個路徑是excel根目錄*/
+      };
+      var global_wb;
+      var process_wb = (function() {
+      var OUT = document.getElementById('out');
+      var HTMLOUT = document.getElementById('htmlout');
+      var get_format = (function() {
+      var radios = document.getElementsByName( "format" );
+      return function() {
+      for(var i = 0; i < radios.length; ++i) if(radios[i].checked || radios.length === 1) return radios[i].value;
+      };
+      })();
+      var to_json = function to_json(workbook) {
+      var result = {};
+      workbook.SheetNames.forEach(function(sheetName) {
+      var roa = X.utils.sheet_to_json(workbook.Sheets[sheetName], {header:1});
+      if(roa.length) result[sheetName] = roa;
+      });
+      return JSON.stringify(result, 2, 2);
+      };
+      var to_csv = function to_csv(workbook) {
+      var result = [];
+      workbook.SheetNames.forEach(function(sheetName) {
+      var csv = X.utils.sheet_to_csv(workbook.Sheets[sheetName]);
+      if(csv.length){
+      result.push("SHEET: " + sheetName);
+      result.push("");
+      result.push(csv);
+      }
+      });
+      return result.join("\\n");
+      };
+      var to_fmla = function to_fmla(workbook) {
+      var result = [];
+      workbook.SheetNames.forEach(function(sheetName) {
+      var formulae = X.utils.get_formulae(workbook.Sheets[sheetName]);
+      if(formulae.length){
+      result.push("SHEET: " + sheetName);
+      result.push("");
+      result.push(formulae.join("\\n"));
+      }
+      });
+      return result.join("\\n");
+      };
+      var to_html = function to_html(workbook) {
+      HTMLOUT.innerHTML = "";
+      workbook.SheetNames.forEach(function(sheetName) {
+      var htmlstr = X.write(workbook, {sheet:sheetName, type:'string', bookType:'html'});
+      HTMLOUT.innerHTML += htmlstr;
+      });
+      return "";
+      };
+      var to_xlsx = function to_xlsx(workbook) {
+      HTMLOUT.innerHTML = "";
+      XLSX.writeFile(workbook, "SheetJSTest.xlsx");
+      return "";
+      };
+      return function process_wb(wb) {
+      global_wb = wb;
+      var output = "";
+      switch(get_format()) {
+      case "form": output = to_fmla(wb); break;
+      case "html": output = to_html(wb); break;
+      case "json": output = to_json(wb); break;
+      case "xlsx": output = to_xlsx(wb); break;
+      default: output = to_csv(wb);
+      }
+      if(OUT.innerText === undefined) OUT.textContent = output;
+      else OUT.innerText = output;
+      if(typeof console !== 'undefined') console.log("output", new Date());
+      };
+      })();
+      var setfmt = window.setfmt = function setfmt() { if(global_wb) process_wb(global_wb); };
+      var b64it = window.b64it = (function() {
+      var tarea = document.getElementById('b64data');
+      return function b64it() {
+      if(typeof console !== 'undefined') console.log("onload", new Date());
+      var wb = X.read(tarea.value, {type:'base64', WTF:false});
+      process_wb(wb);
+      };
+      })();
+      var do_file = (function() {
+      var rABS = typeof FileReader !== "undefined" && (FileReader.prototype||{}).readAsBinaryString;
+      var domrabs = document.getElementsByName("userabs")[0];
+      if(!rABS) domrabs.disabled = !(domrabs.checked = false);
+      var use_worker = typeof Worker !== 'undefined';
+      var domwork = document.getElementsByName("useworker")[0];
+      if(!use_worker) domwork.disabled = !(domwork.checked = false);
+      var xw = function xw(data, cb) {
+      var worker = new Worker(XW.worker);
+      worker.onmessage = function(e) {
+      switch(e.data.t) {
+      case 'ready': break;
+      case 'e': console.error(e.data.d); break;
+      case XW.msg: cb(JSON.parse(e.data.d)); break;
+      }
+      };
+      worker.postMessage({d:data,b:rABS?'binary':'array'});
+      };
+      return function do_file(files) {
+      rABS = domrabs.checked;
+      use_worker = domwork.checked;
+      var f = files[0];
+      var reader = new FileReader();
+      reader.onload = function(e) {
+      if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
+      var data = e.target.result;
+      if(!rABS) data = new Uint8Array(data);
+      if(use_worker) xw(data, process_wb);
+      else process_wb(X.read(data, {type: rABS ? 'binary' : 'array'}));
+      };
+      if(rABS) reader.readAsBinaryString(f);
+      else reader.readAsArrayBuffer(f);
+      };
+      })();
+      (function() {
+      var dropZone = document.getElementById('drop-zone')
+      if(!dropZone.addEventListener && !window.addEventListener) return;
+      function handleDrop(e) {
+      dropZoneDisplay(e, false);
+      do_file(e.dataTransfer.files);
+      }
+      function handleDragover(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'copy';
+      }
+      function dropZoneDisplay(e, show){
+      e.stopPropagation();
+      e.preventDefault();
+      var opacity = show ? '1' : '0';
+      var zIndex  = show ? '1' : '-1';
+      dropZone.style.opacity = opacity;
+      dropZone.style.zIndex = zIndex;
+      }
+      window.addEventListener('drop' , handleDrop)
+      window.addEventListener('dragover' , handleDragover)
+      window.addEventListener('dragenter' , function(e){
+      dropZoneDisplay(e, true);
+      })
+      dropZone.addEventListener('dragleave' , function(e){
+      dropZoneDisplay(e, false);
+      })
+      })();
+      (function() {
+      var xlf = document.getElementById('xlf');
+      if(!xlf.addEventListener) return;
+      function handleFile(e) { do_file(e.target.files); }
+      xlf.addEventListener('change', handleFile, false);
+      })();
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36810333-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      console.log("Remove traffic tracking");
+      /*
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      */
+      })();
+  - }
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+  - if(isADMIN==true) {
+    script(src='/excel/index.js')
+  - }
+    //上面是excel下面是ui
+    .ui.tablet.computer.only.padded.grid
+      #headderBar.ui.inverted.borderless.top.fixed.fluid.menu
+        if !disable_accession_number_to_link_to_master_plan
+          a.ui.header.item(href='#') 新進圖書
+        else 
+          a.header.item(href='#')=Replace_text_to_re_enter_the_book_data_record
+        .right.menu
+          .item
+            form.ui.form(onsubmit="event.target.querySelector('i').click();")
+              //TODO preventDefault
+              .inline.fields
+                .field
+                  script(async='' src='https://cse.google.com/cse.js?cx=d613870f87198941e')
+                  .AugmentedExternalSearchModule.ui.icon.input
+                    .gcse-searchbox-only
+                    input(type='text' placeholder='Search...')
+                    i.AugmentedExternalSearchModuleF.inverted.circular.search.link.icon(onclick="var AugmentedExternalSearchModule=event.target.closest('.AugmentedExternalSearchModule');AugmentedExternalSearchModule.getElementsByTagName('input')[0].value=AugmentedExternalSearchModule.getElementsByTagName('input')[1].value;AugmentedExternalSearchModule.getElementsByTagName('button')[0].click();")
+          a.item(href='/') 回首頁
+          a.item(href='/journals') 期刊服務
+          a.item(href='/inner?ic=g') 館際合作
+          a.item(href='/electronic-resources') 電子資源
+    .ui.mobile.only.padded.grid
+      .ui.top.fixed.borderless.fluid.inverted.menu
+        a.header.item 期刊服務
+        .right.menu
+          .item
+            button.ui.icon.toggle.basic.inverted.button
+              i.content.icon
+        .ui.vertical.borderless.inverted.fluid.menu
+          a.item Dashboard
+          a.item Settings
+          a.item Profile
+          a.item Help
+          .ui.fitted.divider
+          .item
+            form.ui.form(onsubmit="event.target.querySelector('i').click();")
+              //TODO preventDefault
+              .inline.fields
+                .field
+                  script(async='' src='https://cse.google.com/cse.js?cx=d613870f87198941e')
+                  .AugmentedExternalSearchModule.ui.icon.input
+                    .gcse-searchbox-only
+                    input(type='text' placeholder='Search...')
+                    i.AugmentedExternalSearchModuleF.inverted.circular.search.link.icon(onclick="var AugmentedExternalSearchModule=event.target.closest('.AugmentedExternalSearchModule');AugmentedExternalSearchModule.getElementsByTagName('input')[0].value=AugmentedExternalSearchModule.getElementsByTagName('input')[1].value;AugmentedExternalSearchModule.getElementsByTagName('button')[0].click();")
+    .ui.padded.grid
+      #sidebar.three.wide.tablet.only.three.wide.computer.only.column
+        .ui.vertical.borderless.fluid.text.menu(style="height : 85vh; overflow : scroll;")!= innerHTMLofLlist
+          //-TODO要處裡看不到側欄的問題
+          //這底下的咚咚碼掉
+            //- show all...etc
+            a.active.item A
+            a#ididid.item(onClick='console.log("***!");')
+              //-!!!popup參考，但是參考是崩的。會噴錯
+              button.circular.ui.icon.button(onClick='console.log("up");')
+                i.icon.arrow.up
+              button.circular.ui.icon.button(onClick='console.log("dw");')
+                i.icon.arrow.down
+              button.circular.ui.icon.button(onClick='console.log("dl");')
+                i.icon.trash.alternate
+              //--button.circular.ui.icon.button(onClick="var myid='#'+String(event.target.parentElement.parentElement.id);event.target.parentElement.parentElement.setAttribute('data-content',event.target.parentElement.parentElement.innerText);$(myid).popup('toggle');")
+                i.icon.info
+              h6.ui.block.header(onClick='console.log("np");') DOCtopic xdcfvghbjnkml
+            a.item whatthefuck
+            a.item D
+            .ui.hidden.divider
+            //- show eng...etc
+            a.item E
+            a.item F
+            a.item G
+            a.item H
+            a.item I
+            .ui.hidden.divider
+            //- show ch...etc
+            a.item J
+            a.item K
+            a.item L
+      #content.sixteen.wide.mobile.thirteen.wide.tablet.thirteen.wide.computer.right.floated.column
+        .ui.padded.grid
+          - if(isADMIN==true) {
+            .row
+              if !disable_accession_number_to_link_to_master_plan
+                h1.ui.huge.dividing.header 新進圖書資料紀錄
+              else 
+                h1.ui.huge.dividing.header=Replace_text_to_re_enter_the_book_data_record
+            .center.aligned.row
+              .eight.wide.mobile.four.wide.tablet.four.wide.computer.column
+                //img.ui.centered.small.circular.image(src='/newbookpage/static/images/wireframe/square-image.png')
+                //.ui.large.basic.label 最新上架
+                //p Something else
+                .ui.card
+                  .content
+                      .header 上傳excel檔案
+                  .content
+                      h4.ui.sub.header 點選下方按鈕以上傳檔案
+                      .ui.small.feed
+                      .event
+                          .content
+                          .summary
+                              p  按下去選檔案後，稍等一會兒，檔案處理需要一些時間。
+                              p  如果沒有反應，網頁關掉再重開。
+                              p  建議使用windows系統的電腦來進行上傳的動作。
+                              p  建議使用最新的chrome瀏覽器來上傳檔案。
+                              p  檔案大小限制：10Mebi位元組
+                      .ui.info.message
+                          .header 檔案名稱 
+                          ul.list
+                              li#the_file_name ...
+                  .extra.content
+                      button.ui.button(onClick="document.getElementById('xlf').click();") 上傳按鈕
+              if !disable_accession_number_to_link_to_master_plan
+                .eight.wide.mobile.four.wide.tablet.four.wide.computer.column
+                  .ui.card
+                    .content
+                        .header 使登錄號可以連結至總圖
+                    .content
+                        h4.ui.sub.header 點選下方按鈕以自動化的產生(每筆資料)連結
+                        .ui.small.feed
+                        .event
+                            .content
+                            .summary
+                                p  對於較大的檔案，需要較長的處理時間。
+                                p  如果網頁沒有回應，請嘗試使用效能較好的電腦。
+                                p  此程式將視表格中的第一個行視為登錄號的格子。
+                                p  第一個行須存在一個格子其內容包含「登錄號」字樣。
+                                p  上述格子與其上方的格子將被視為標題而不被「超連結化」。
+                    .extra.content
+                        button.ui.button#RegistrationNumberLinkAutomaticallyGenerated 登錄號連結(自動)產生
+              .eight.wide.mobile.four.wide.tablet.four.wide.computer.column
+                //.ui.card
+                  .content
+                      .header 
+                  .content
+                      h4.ui.sub.header 非技術人員請勿操作此項目
+                      .ui.small.feed
+                      .ui.input
+                        input(type='text' placeholder='Search...')
+                  .extra.content
+                      button.ui.button 登錄號連結(自動)產生
+                .ui.card
+                  .content
+                      .header 選擇目標資料庫
+                  .content
+                      h4.ui.sub.header 非技術人員請勿操作此項目
+                      .ui.small.feed
+                      .ui.input
+                        input#batabaseClass(type='text' placeholder='資料庫...' value=VARdbname)
+                  .extra.content
+                      | 資料庫輸入框安全鎖
+                      .ui.buttons
+                        button.ui.button.TRIGdissableOnStart(onClick="document.getElementById('batabaseClass').setAttribute('readOnly','true');") 停用
+                        .or
+                        button.ui.positive.button(onClick="document.getElementById('batabaseClass').removeAttribute('readOnly');") 啟用
+                .ui.card
+                  .content
+                      .header 給定順序編號
+                  .content
+                      h4.ui.sub.header 非技術人員請勿操作此項目
+                      .ui.small.feed
+                      .ui.input
+                        input#ChansuNoJunban(type='text' placeholder='順序編號...' value=VARcountClassJade)
+                  .extra.content
+                      | 排序編號輸入框安全鎖
+                      .ui.buttons
+                        button.ui.button.TRIGdissableOnStart(onClick="document.getElementById('ChansuNoJunban').setAttribute('readOnly','true');") 停用
+                        .or
+                        button.ui.positive.button(onClick="document.getElementById('ChansuNoJunban').removeAttribute('readOnly');") 啟用
+              .eight.wide.mobile.four.wide.tablet.four.wide.computer.column
+                .ui.card
+                  .content
+                      .header 輸入標題並存檔
+                  .content
+                      h4.ui.sub.header 在下方輸入框輸入標題，並且按下存檔
+                      .ui.small.feed
+                      .ui.input
+                        input#INtopic(type='text' placeholder='標題...')
+                  .extra.content
+                      button.ui.button#totalSave 存檔!
+          .ui.hidden.section.divider
+          - }
+          .row
+            h1.ui.huge.dividing.header #{ topicORwait2load }
+          //.row
+            //- 底下這坨東西是設定表格應用程式的語言，消失吧!
+            .select
+              select#locale.ui.dropdown
+                option(value='af-ZA') af-ZA
+                option(value='ar-SA') ar-SA
+                option(value='ca-ES') ca-ES
+                option(value='cs-CZ') cs-CZ
+                option(value='da-DK') da-DK
+                option(value='de-DE') de-DE
+                option(value='el-GR') el-GR
+                option(value='en-US') en-US
+                option(value='es-AR') es-AR
+                option(value='es-CL') es-CL
+                option(value='es-CR') es-CR
+                option(value='es-ES') es-ES
+                option(value='es-MX') es-MX
+                option(value='es-NI') es-NI
+                option(value='es-SP') es-SP
+                option(value='et-EE') et-EE
+                option(value='eu-EU') eu-EU
+                option(value='fa-IR') fa-IR
+                option(value='fi-FI') fi-FI
+                option(value='fr-BE') fr-BE
+                option(value='fr-FR') fr-FR
+                option(value='he-IL') he-IL
+                option(value='hr-HR') hr-HR
+                option(value='hu-HU') hu-HU
+                option(value='id-ID') id-ID
+                option(value='it-IT') it-IT
+                option(value='ja-JP') ja-JP
+                option(value='ka-GE') ka-GE
+                option(value='ko-KR') ko-KR
+                option(value='ms-MY') ms-MY
+                option(value='nb-NO') nb-NO
+                option(value='nl-NL') nl-NL
+                option(value='pl-PL') pl-PL
+                option(value='pt-BR') pt-BR
+                option(value='pt-PT') pt-PT
+                option(value='ro-RO') ro-RO
+                option(value='ru-RU') ru-RU
+                option(value='sk-SK') sk-SK
+                option(value='sv-SE') sv-SE
+                option(value='th-TH') th-TH
+                option(value='tr-TR') tr-TR
+                option(value='uk-UA') uk-UA
+                option(value='ur-PK') ur-PK
+                option(value='uz-Latn-UZ') uz-Latn-UZ
+                option(value='vi-VN') vi-VN
+                option(value='zh-CN') zh-CN
+                option(value='zh-TW' selected='') zh-TW
+            #toolbar
+              button#remove.ui.red.button(disabled='')
+                i.fa.fa-trash
+                |  Delete
+            table#table(data-toolbar='#toolbar' data-search='true' data-show-refresh='true' data-show-toggle='true' data-show-fullscreen='true' data-show-columns='true' data-show-columns-toggle-all='true' data-detail-view='true' data-show-export='true' data-click-to-select='true' data-detail-formatter='detailFormatter' data-minimum-count-columns='2' data-show-pagination-switch='true' data-pagination='true' data-id-field='id' data-page-list='[10, 25, 50, 100, all]' data-show-footer='true' data-side-pagination='server' data-url='https://examples.wenzhixin.net.cn/examples/bootstrap_table/data' data-response-handler='responseHandler')
+          - if(isADMIN==true) {
+            .row#htmlOutCopy(style='overflow-x: auto;')
+              .ui.warning.message
+                i.icon.help
+                .header 這是等一下excel檔案載入後要預覽的地方 
+                | 請看看上面如何載入檔案的方式...
+          - } else {
+            .row#htmlOutCopy(style='overflow-x: auto;')!= PUGVARHTMLpayload
+          - }
+            //table.ui.single.line.striped.selectable.unstackable.table(style='overflow-x: auto;')
+              thead
+                tr
+                  th #
+                  th Header
+                  th Header
+                  th Header
+                  th Header
+              tbody
+                tr
+                  td 1,001
+                  td Lorem
+                  td ipsum
+                  td dolor
+                  td sit
+                tr
+                  td 1,002
+                  td amet
+                  td consectetur
+                  td adipiscing
+                  td elit
+                tr
+                  td 1,003
+                  td Integer
+                  td nec
+                  td odio
+                  td Praesent
+                tr
+                  td 1,003
+                  td libero
+                  td Sed
+                  td cursus
+                  td ante
+                tr
+                  td 1,004
+                  td dapibus
+                  td diam
+                  td Sed
+                  td nisi
+                tr
+                  td 1,005
+                  td Nulla
+                  td quis
+                  td sem
+                  td at
+                tr
+                  td 1,006
+                  td nibh
+                  td elementum
+                  td imperdiet
+                  td Duis
+                tr
+                  td 1,007
+                  td sagittis
+                  td ipsum
+                  td Praesent
+                  td mauris
+                tr
+                  td 1,008
+                  td Fusce
+                  td nec
+                  td tellus
+                  td sed
+                tr
+                  td 1,009
+                  td augue
+                  td semper
+                  td porta
+                  td Mauris
+    if linkAFTERfinish
+      #linkAFTERfinish=linkAFTERfinish
+    else 
+      #linkAFTERfinish no
+    #aLotOFjs(style='display: none;')
+      // 請注意:所有script的順序都是嚴格要求的
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+      script(src='https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/themes/semantic/bootstrap-table-semantic.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js')
+      script(src='https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js')
+      script(src='https://kit.fontawesome.com/8d41246ac0.js' crossorigin='anonymous')
+      script(src='/newbookpage/js/app_table.js')
+      script(src='/newbookpage/js/index.js')
+      //-存檔ok,db輸入框

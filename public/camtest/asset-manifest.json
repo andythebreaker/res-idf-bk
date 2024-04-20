@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/camtest/static/css/main.073c9b0a.css",
+    "main.js": "/camtest/static/js/main.1e0df716.js",
+    "static/js/787.28cb0dcd.chunk.js": "/camtest/static/js/787.28cb0dcd.chunk.js",
+    "static/media/logo.svg": "/camtest/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/camtest/index.html",
+    "main.073c9b0a.css.map": "/camtest/static/css/main.073c9b0a.css.map",
+    "main.1e0df716.js.map": "/camtest/static/js/main.1e0df716.js.map",
+    "787.28cb0dcd.chunk.js.map": "/camtest/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.1e0df716.js"
+  ]
+}

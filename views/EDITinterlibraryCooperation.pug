@@ -1,0 +1,362 @@
+extends layout_angular
+
+block content
+  #jade_user_info.quickDisplayNone
+  #jade_user_info_name.quickDisplayNone #{var_jade_user_info_name}
+  #jade_user_info_username.quickDisplayNone #{var_jade_user_info_username}
+  #jade_user_info_profileimage.quickDisplayNone #{var_jade_user_info_profileimage}
+  #jade_user_info_choosedanimal.quickDisplayNone #{var_jade_user_info_choosedanimal}
+  //-script(src='/ws/index.js')
+  link(rel='stylesheet', href='/stylesheets/FreebieInteractiveFlatDesignUIOnlyHTML5CSS3.css')
+  link(rel='stylesheet', href='/stylesheets/https_codepen_io_maggiben_pen_OPmLBW.css')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css' rel='stylesheet')
+  link(href='/stylesheets/pureCSSpopUP.css' rel='stylesheet')
+  .main-container
+      // HEADER
+      header.block
+        ul.header-menu.horizontal-list
+          li
+            a.header-menu-tab(href='/')
+              span.icon.entypo-docs.scnd-font-color
+              | 館際合作頁面維護
+          li
+            a.aLikeMouse.header-menu-tab(onclick="document.getElementById('ClickMe').click()")
+              span.icon.entypo-right-bold.scnd-font-color
+              | 先填寫表單連結與說明文字
+          li
+            a.aLikeMouse.header-menu-tab(onclick="document.getElementById('ClickMeToo').click()")
+              span.icon.entypo-right-bold.scnd-font-color
+              | 再按下一步編輯內文
+            //a.header-menu-number(href='#4') 5
+          //li
+            a.header-menu-tab(href='/users/logout')
+              span.icon.entypo-logout.scnd-font-color
+              | 登出
+        //.profile-menu
+          p
+            | 注意:動作會複寫既有資料
+            //-a(href='#26')
+              span.entypo-down-open.scnd-font-color
+          .profile-picture.small-profile-picture
+            img(width='40px' alt='Anne Hathaway picture' src='http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg')
+      // LEFT-CONTAINER
+      .left-container.container
+        //.menu-box.block
+          //- MENU BOX (LEFT-CONTAINER)
+          h2.titular 主功能表
+          ul.menu-box-menu
+            //-https://weloveiconfonts.com/
+            li
+              a.menu-box-tab(href='/main/addNewBooks')
+                span.icon.entypo-brush.scnd-font-color
+                | 新增「新書通報」
+                //-.menu-box-number 24
+            li
+              a.menu-box-tab(href='/main/add_periodical')
+                span.icon.entypo-book-open.scnd-font-color
+                | 新增期刊
+                //-.menu-box-number 3
+            li
+              a.menu-box-tab(href='/main/journals')
+                span.icon.entypo-sweden.scnd-font-color
+                | 期刊管理/編輯
+                //-.menu-box-number 5
+            li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                span.icon.entypo-cog.scnd-font-color
+                | 首頁動畫編輯(未開放)
+                .menu-box-number X
+            li
+              a.menu-box-tab(href='/main/docxUpload')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 添加最新消息
+        .account.block
+          //- ACCOUNT (RIGHT-CONTAINER)
+          h2.titular 添加按鈕連結
+          .input-container
+            input#tbB.email.text-input(type='text' placeholder='按鈕說明文字')
+            .input-icon.envelope-icon-acount
+              span.fontawesome-magnet.scnd-font-color
+          .input-container
+            input#tbL.password.text-input(type='text' placeholder='連結(一律在新分頁開啟)')
+            .input-icon.password-icon
+              span.fontawesome-link.scnd-font-color
+          a.sign-in.button(href='#22' onclick="addBL()") 加到佇列
+          p.scnd-font-color &emsp;
+          a.fb-sign-in(onclick="rma()")
+            p
+              span.fb-border
+                span.icon.zocial-bitbucket
+              | 清空佇列!
+      // MIDDLE-CONTAINER
+      .middle-container.container
+        //.profile.block
+          //-- PROFILE (MIDDLE-CONTAINER)
+          a.add-button(href='#28')
+            span.icon.entypo-plus.scnd-font-color
+          .profile-picture.big-profile-picture.clear
+            img(width='150px' alt='Anne Hathaway picture' src='http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg')
+          h1.user-name Anne Hathaway
+          .profile-description
+            p.scnd-font-color Lorem ipsum dolor sit amet consectetuer adipiscing
+          ul.profile-options.horizontal-list
+            li
+              a.comments(href='#40')
+                p
+                  span.icon.fontawesome-comment-alt.scnd-font-color
+                  | 23
+            p
+            li
+              a.views(href='#41')
+                p
+                  span.icon.fontawesome-eye-open.scnd-font-color
+                  | 841
+            p
+            li
+              a.likes(href='#42')
+                p
+                  span.icon.fontawesome-heart-empty.scnd-font-color
+                  | 49
+            p
+        #stackBL.tweets.block
+          //- TWEETS (MIDDLE-CONTAINER)
+          h2.titular
+            span.icon.fontawesome-list-ol
+            | 按鈕與連結佇列
+          //TODO會破圖
+          //.tweet.first
+            p
+              | Ice-cream trucks only play music when out of ice-cream. Well played dad. On 
+              a.tweet-link(href='#17') &emsp;
+            p
+              a.time-ago.scnd-font-color(href='#18') 3 minutes ago
+          //.tweet
+            p
+              | We are in the process of pushing out all of the new CC apps! We will tweet again once they are live 
+              a.tweet-link(href='#19') &emsp;
+            p
+              a.scnd-font-color(href='#20') 6 hours ago
+        //ul.social.block
+          //-- SOCIAL (MIDDLE-CONTAINER)
+          li
+            a(href='#50')
+              .facebook.icon
+                span.zocial-facebook
+              h2.facebook.titular SHARE TO FACEBOOK
+          li
+            a(href='#51')
+              .twitter.icon
+                span.zocial-twitter
+              h2.twitter.titular SHARE TO TWITTER
+          li
+            a(href='#52')
+              .googleplus.icon
+                span.zocial-googleplus
+              h2.googleplus.titular SHARE TO GOOGLE+
+      // RIGHT-CONTAINER
+      .right-container.container
+        //.join-newsletter.block
+          //- JOIN NEWSLETTER (RIGHT-CONTAINER)
+          h2.titular JOIN THE NEWSLETTER
+          .input-container
+            input.email.text-input(type='text' placeholder='yourname@gmail.com')
+            .input-icon.envelope-icon-newsletter
+              span.fontawesome-envelope.scnd-font-color
+          a.subscribe.button(href='#21') SUBSCRIBE
+        .weather.block.clear
+          // WEATHER (MIDDLE-CONTAINER)
+          h2.titular
+            span.icon.entypo-rocket
+            strong 下一步
+          .current-day
+            p.current-day-date 內容編輯
+            p.current-day-temperature
+              | 二選一
+              span.icon-cloudy
+          ul.next-days
+            li
+              a(href='#43' onclick="$('#TheNextStep').text('2');submitBTON();")
+                p.next-days-date
+                  span.day markdown
+                  span.scnd-font-color 純文字編輯
+                p.next-days-temperature
+                  | (方便)
+                  span.icon.icon-cloudy.scnd-font-color
+            li
+              a( href='#' onclick="$('#TheNextStep').text('1');submitBTON();")
+                p.next-days-date
+                  span.day word
+                  span.scnd-font-color 上傳文件
+                p.next-days-temperature
+                  | (推薦)
+                  span.icon.icon-cloudy2.scnd-font-color
+        //.loading.block
+          //- LOADING (RIGHT-CONTAINER)
+          .progress-bar.downloading
+          p
+            span.icon.fontawesome-cloud-download.scnd-font-color
+            | Downloading...
+          p.percentage
+            | 81
+            sup %
+          .progress-bar.uploading
+          p
+            span.icon.fontawesome-cloud-upload.scnd-font-color
+            | Uploading...
+          p.percentage
+            | 43
+            sup %
+        //.calendar-day.block
+          //- CALENDAR DAY (RIGHT-CONTAINER)
+          .arrow-btn-container
+            a.arrow-btn.left(href='#200')
+              span.icon.fontawesome-angle-left
+            h2.titular WEDNESDAY
+            a.arrow-btn.right(href='#201')
+              span.icon.fontawesome-angle-right
+          p.the-day 26
+          a.add-event.button(href='#27') ADD EVENT
+        //.calendar-month.block
+          //- CALENDAR MONTH (RIGHT-CONTAINER)
+          .arrow-btn-container
+            a.arrow-btn.left(href='#202')
+              span.icon.fontawesome-angle-left
+            h2.titular APRIL 2013
+            a.arrow-btn.right(href='#203')
+              span.icon.fontawesome-angle-right
+          table.calendar
+            thead.days-week
+              tr
+                th S
+                th M
+                th T
+                th W
+                th R
+                th F
+                th S
+            tbody
+              tr
+                td
+                td
+                td
+                td
+                td
+                td
+                td
+                  a.scnd-font-color(href='#100') 1
+              tr
+                td
+                  a.scnd-font-color(href='#101') 2
+                td
+                  a.scnd-font-color(href='#102') 3
+                td
+                  a.scnd-font-color(href='#103') 4
+                td
+                  a.scnd-font-color(href='#104') 5
+                td
+                  a.scnd-font-color(href='#105') 6
+                td
+                  a.scnd-font-color(href='#106') 7
+                td
+                  a.scnd-font-color(href='#107') 8
+              tr
+                td
+                  a.scnd-font-color(href='#108') 9
+                td
+                  a.scnd-font-color(href='#109') 10
+                td
+                  a.scnd-font-color(href='#110') 11
+                td
+                  a.scnd-font-color(href='#111') 12
+                td
+                  a.scnd-font-color(href='#112') 13
+                td
+                  a.scnd-font-color(href='#113') 14
+                td
+                  a.scnd-font-color(href='#114') 15
+              tr
+                td
+                  a.scnd-font-color(href='#115') 16
+                td
+                  a.scnd-font-color(href='#116') 17
+                td
+                  a.scnd-font-color(href='#117') 18
+                td
+                  a.scnd-font-color(href='#118') 19
+                td
+                  a.scnd-font-color(href='#119') 20
+                td
+                  a.scnd-font-color(href='#120') 21
+                td
+                  a.scnd-font-color(href='#121') 22
+              tr
+                td
+                  a.scnd-font-color(href='#122') 23
+                td
+                  a.scnd-font-color(href='#123') 24
+                td
+                  a.scnd-font-color(href='#124') 25
+                td
+                  a.today(href='#125') 26
+                td
+                  a(href='#126') 27
+                td
+                  a(href='#127') 28
+                td
+                  a(href='#128') 29
+              tr
+                td
+                  a(href='#129') 30
+                td
+                td
+                td
+                td
+                td
+                td
+        //#calendar.calendar.block.otherplugincalendar(calendar='')
+        // end calendar-month block
+        // end right-container
+        // end main-container
+  .pureCSSpopUP
+    //https://codepen.io/peiche/pen/vhqym
+    h1.dn Popup/Modal Windows without JavaScript
+    #wrapper.dn
+      p
+        a#ClickMe.button(href='#popup1') Click Me
+      p
+        a#ClickMeToo.button(href='#popup2') Click Me Too
+    #popup1.overlay
+      .popup
+        h2 提示訊息
+        a.close(href='#') ×
+        .content
+          p 注意:動作會複寫既有資料!
+    #popup2.overlay.light
+      a.cancel(href='#')
+      .popup
+        h2 提示訊息(點擊空白處關閉)
+        .content
+          p 下一步的按鈕按下去會自動調轉頁面!
+  //#submitBTON( onclick="$.post('/main/addleast',{YYYY:$('#YYYY').val(),M:$('#M').val(),D:$('#D').val(),h:$('#h').val(),mm:$('#mm').val(),tp:$('#tp').val(),ab:$('#ab').val(),labels:$('#labels').text(),uri:'$(__#uri__).val()'},(r)=>{console.log(r);if($('#TheNextStep').text()==='1'){window.location.href = '/main/docx?ic=l&id='+r;}else if($('#TheNextStep').text()==='2'){console.log(2);}else if($('#TheNextStep').text()==='3'){console.log(3);}else{console.log('內容->下一步::未定義');}})")
+  #submitBTON( onclick='submitBTON()')
+  #TheNextStep
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js' integrity='sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js")
+  script(src='/javascripts/calendar.js')
+  script(src='/PagingClassification/EDITinterlibraryCooperation/index.js')
+  script.
+    var gs=[];
+    function addBL(){
+    var b= document.getElementById('tbB')?document.getElementById('tbB').value:'none';
+    var l= document.getElementById('tbL')?document.getElementById('tbL').value:'none';
+    var sbl=document.getElementById('stackBL');if(sbl){
+    if(!sbl.getElementsByClassName('tweet').length){sbl.innerHTML+=`<div class="tweet first"><p>${b}<a class="tweet-link" href="#17">&emsp;</a></p><p><a class="time-ago scnd-font-color" href="#18">${l}</a></p></div>`;}
+    else{sbl.innerHTML+=`<div class="tweet"><p>${b}<a class="tweet-link" href="#17">&emsp;</a></p><p><a class="time-ago scnd-font-color" href="#18">${l}</a></p></div>`;}
+    }else{console.error('[frontend error (unexpected)] - cannot find critical web page element { #stackBL }');}
+    gs.push({b:b,l:l});
+    }
+    function rma(){var tmp=document.getElementById('stackBL');
+    while (String(tmp.lastChild.tagName).toUpperCase()!=='H2') {
+    //console.log(String(tmp.lastChild.tagName).toUpperCase());
+    tmp.removeChild(tmp.lastChild);
+    };gs=[];}

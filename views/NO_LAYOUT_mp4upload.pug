@@ -1,0 +1,231 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    title Bootstrap Agency Page Template
+    // Bootstrap
+    //link(href='css/bootstrap-4.3.1.css' rel='stylesheet')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+    style(type='text/css').
+      .testform1 {
+      width: 100%;
+      }
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='/main') andythebreaker_BLOG後台
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            //TODO JS-RELOAD VVVVVVVVVVVVVVVVVVVVVVVVV
+            a.nav-link(href='#')
+              | 影片上傳與管理
+              span.sr-only (current)
+          //li.nav-item
+            a.nav-link(href='#') Link
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') 危險區域 
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#' onclick=`$.ajax({url:"/main/mp4upload/del",type:"DELETE",success:function(i){window.location.href="/main/mp4upload"},error:function(i){Swal.fire('錯誤',i,'error')}})`) 刪除全部的影片檔案
+              //a.dropdown-item(href='#') Another action
+              //.dropdown-divider
+              //a.dropdown-item(href='#') Something else here
+          //li.nav-item
+            a.nav-link.disabled(href='#') Disabled
+        form.form-inline.my-2.my-lg-0
+    header
+      .jumbotron
+        .container
+          .row
+            .col-12
+              h1.text-center 上傳影片
+              p.text-center 先填寫影片資訊，填完後按確認影片資訊，會出現一個上傳檔案的按鈕，再上傳影片
+              p.text-center 進度條跑完前請勿關閉此頁
+              p  
+              p.text-center
+                a#checkvidinfo.btn.btn-primary.btn-lg(href='#' role='button') 確認影片資訊
+
+    section
+      .container
+        .row
+          .col-lg-12.mb-4.mt-2.text-center
+            h2 影片資訊
+      .container
+        .row
+          form.testform1
+            .input-group.mb-3
+              .input-group-prepend
+                span.input-group-text 影片名稱
+              input#This_is_a_well_crafted_film.form-control(type='text' placeholder='這是一部精心製作的影片')
+              .input-group-append  
+            .input-group.mb-3
+              .input-group-prepend
+                span.input-group-text 說明文字
+              input#Let_users_know_more_about_the_content_of_the_video.form-control(type='text' placeholder='讓使用者更了解影片的內容')
+              .input-group-append  
+      .jumbotron
+        .container
+          .row
+            .col-sm-12.mt-4.mb-2.text-center
+              h2 上傳影片按鈕
+            .text-center.col-md-8.col-12.mx-auto
+              p#UPLOADINFOTXT.lead 底下會顯示一個按鈕(要等到上面資訊填完後才會看到)
+          .row
+            #showfilebton.col-sm-4.col-auto.mx-auto.collapse
+              input#inp.btn.btn-block.btn-lg.btn-success(type='file')
+      .container
+        .row
+          .col-12.mb-2.text-center
+            h2 檔案上傳狀態
+        .row
+          .col
+            .progress
+              #uploadPB.progress-bar.progress-bar-animated.progress-bar-striped(role='progressbar' style='width: 25%;' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100') 25%
+        //
+          .col-sm-6.col-lg-4
+            h3 Feature Description
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt impedit est voluptatem doloremque architecto corporis suscipit quidem ratione! Quis laborum nam optio dolorem doloremque ex nobis quibusdam ad quo dolores?
+            p
+              a.btn.btn-link(href='http://www.adobe.com') View details »
+          .col-sm-6.col-lg-4
+            h3 Feature Description
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, illo, libero esse assumenda culpa consequatur exercitationem beatae odio praesentium nihil iste ipsum reiciendis pariatur. Recusandae, reiciendis quidem eaque aut ab.
+            p
+              a.btn.btn-link(href='http://www.adobe.com') View details »
+          .col-sm-6.col-lg-4
+            h3 Feature Description
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, adipisci recusandae veniam laudantium distinctio temporibus eveniet dolorum earum iusto veritatis provident ducimus minima dolore quas vel omnis cumque voluptas quibusdam.
+            p
+              a.btn.btn-link(href='http://www.adobe.com') View details »
+          .col-sm-6.col-lg-4
+            h3 Feature Description
+            p
+              em.icon-desktop
+              |  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, earum rem nostrum provident repellat inventore laborum deleniti quas facere Quasi impedit autem qui cupiditate modi vero vitae dolorum nisi explicabo ea dolores animi. Inventore, omnis.
+            p
+              a.btn.btn-link(href='http://www.adobe.com') View details »
+          .col-sm-6.col-lg-4
+            h3 Feature Description
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, iure, perspiciatis, ab ad quia animi esse repudiandae tempore quisquam dolorem sequi voluptatum qui fugiat. Quasi impedit autem qui cupiditate iusto?
+            p
+              a.btn.btn-link(href='http://www.adobe.com') View details »
+          .col-sm-6.col-lg-4
+            h3 Feature Description
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, aut, hic laudantium reprehenderit sapiente nemo consequatur corrupti accusantium! Hic, non rerum nihil reprehenderit excepturi explicabo error tempore aliquam eveniet odit.
+            p
+              a.btn.btn-link(href='http://www.adobe.com') View details »
+        .row
+          .col-sm-12.mt-4.mb-2.text-center
+            h2 傳輸細節
+        .row
+          .col-sm-6.col-lg-6.border.border-dark
+            blockquote.blockquote
+              p#stp1.mb-0 伺服器下線
+              small.blockquote-footer
+                | 步驟 
+                cite(title='1') 1
+          .col-sm-6.col-lg-6.border.border-dark
+            blockquote.blockquote
+              p#stp2.mb-0 尚未開始傳送
+              small.blockquote-footer
+                | 步驟 
+                cite(title='2') 2
+          .col-sm-6.col-lg-6.border.border-dark
+            blockquote.blockquote
+              p#stp3.mb-0 傳輸過程沒有發生錯誤
+              small.blockquote-footer
+                | 步驟 
+                cite(title='3') 3
+          .col-sm-6.col-lg-6.border.border-dark
+            blockquote.blockquote
+              p#stp4.mb-0 傳送尚未終了
+              small.blockquote-footer
+                | 步驟 
+                cite(title='4') 4
+    .container
+      .row
+        .col-12.col-md-12.mx-auto
+          .jumbotron
+            .row.text-center
+              .text-center.col-12
+                h2.ui.header 所有影片
+                  h6.sub.header 請複製連結到任何您需要用這個影片的地方
+              .text-center.col-12
+                table.table.table-striped.table-dark.table-hover.table-responsive
+                  thead
+                    tr
+                      th(scope='col') #{mp4list.length}
+                      th(scope='col') 上傳日期時間
+                      th(scope='col') 名稱
+                      th(scope='col') 說明
+                      th(scope='col') 超連結
+                      th(scope='col') 操作
+                  tbody
+                    each item, index in mp4list
+                      if item.id
+                        tr
+                          th(scope='row') #{index}
+                          td #{item.date_time}
+                          td #{item.name}
+                          td #{item.info}
+                          td 
+                            a.prurl(style="color:white;") #{item.cid}
+                          td 
+                            a.btn.btn-outline-danger(type='button' href=`/main/delVidById?id=${item.id}`) 刪除
+                            button.btn.btn-outline-info(type='button' onclick=`Swal.fire({icon: 'info',title: '轉檔資訊',text: '${nqT(JSON.stringify(item.ffmpeginfo?item.ffmpeginfo:'n/a'))}',footer: '最後更新時間:${INFOTIME}，重新整理此頁以收集最新資訊'})`) 轉檔情報
+
+
+                //- CONTACT FORM https://github.com/jonmbake/bootstrap3-contact-form
+                //form#feedbackForm.text-center
+                  .form-group
+                    label(for='name') Name
+                    input#name.form-control(type='text' name='name' placeholder='Name' aria-describedby='nameHelp')
+                    span#nameHelp.form-text.text-muted(style='display: none;') Please enter your name.
+                  .form-group
+                    label(for='email') E-Mail
+                    input#email.form-control(type='email' name='email' placeholder='Email Address' aria-describedby='emailHelp')
+                    span#emailHelp.form-text.text-muted(style='display: none;') Please enter a valid e-mail address.
+                  .form-group
+                    label(for='message') Message
+                    textarea#message.form-control(rows='10' cols='100' name='message' placeholder='Message' aria-describedby='messageHelp')
+                    span#messageHelp.form-text.text-muted(style='display: none;') Please enter a message.
+                  button#feedbackSubmit.btn.btn-primary.btn-lg(type='submit')  Send
+    hr
+    footer.text-center
+      .container
+        .row
+          .col-12
+            p
+              | andythebreaker_BLOG後台
+              //| 影片轉換使用
+              //a(href="https://github.com/andythebreaker/vid2hls") https://github.com/andythebreaker/vid2hls
+              //| 套件
+    // jQuery (necessary for Bootstrap's JavaScript plugins)
+    //script(src='js/jquery-3.3.1.min.js')
+    // Include all compiled plugins (below), or include individual files as needed
+    //script(src='js/popper.min.js')
+    //script(src='js/bootstrap-4.3.1.js')
+  script(src='https://code.jquery.com/jquery-3.6.0.min.js' integrity='sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js' integrity='sha512-szJ5FSo9hEmXXe7b5AUVtn/WnL8a5VofnFeYC2i2z03uS2LhAch7ewNLbl5flsEmTTimMN0enBZg/3sQ+YOSzQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  script(src='/ws/mp4upload.js')
+  script(src='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.8/dist/sweetalert2.all.min.js' integrity='sha256-aHuHTU7SdMUuRBFzJX+PRkbfy9kd0uGHS8uc4M/NVBo=' crossorigin='anonymous')
+
+  script.
+    var full = location.protocol + '//' + location.host+'/video/';
+    var pru = document.getElementsByClassName('prurl');
+    if(pru&&pru.length>0){
+      for(var i=0; i <pru.length;i++){
+        pru[i].href=full+pru[i].innerText;
+        pru[i].innerHTML=full+"<br>"+pru[i].innerText;
+      }
+    }

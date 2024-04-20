@@ -1,0 +1,19 @@
+/* #headderBar {
+    background-image: linear-gradient(to bottom, #63914BFF 0, #467E2EFF 100%);
+} */
+
+#masterVision {
+    background-color: #DBC89AFF;
+}
+
+/*th.detail {
+    display: none;
+}
+
+#table tbody tr :first-child {
+    display: none;
+}*/
+
+#remove{
+    display: none;
+}

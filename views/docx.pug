@@ -1,0 +1,319 @@
+extends layout
+
+block contentHEAD
+  meta(charset='utf-8')
+  //-title Samantha
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/samantha.css')
+  link(crossorigin="anonymous" rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+  //- link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/ButtonsUIKit.css' type='text/css')
+  link(crossorigin="anonymous" href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet')
+  //- link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/welovefontsicon.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css' integrity='sha512-SJw7jzjMYJhsEnN/BuxTWXkezA2cRanuB8TdCNMXFJjxG9ZGSKOX5P3j03H6kdMxalKHZ7vlBMB4CagFP/de0A==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.css' integrity='sha512-tKGnmy6w6vpt8VyMNuWbQtk6D6vwU8VCxUi0kEMXmtgwW+6F70iONzukEUC3gvb+KTJTLzDKAGGWc1R7rmIgxQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/print.css' type='text/css')
+  link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/share_btns.css' type='text/css')
+  //link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/free_3d_an.css' type='text/css')
+  link(rel='stylesheet' href='/jumbotron/stylesheets/index.css')
+  link(rel='stylesheet' href='/stylesheets/External_embedded_search_box.css' type='text/css')
+  style.
+    @import url('/jumbotron/stylesheets/customStyle.css');
+
+block content
+  #sharepop.ui.modal
+    i.close.icon
+    .header
+      | Profile Picture
+    .image.content.d3
+      .ui.medium.image
+        img(src='https://3dicons.sgp1.cdn.digitaloceanspaces.com/v1/dynamic/premium/rocket-dynamic-premium.png')
+      //TODO https://3dicons.co/
+      //.icons-box
+        .i-wrap
+          .img-ani
+            .img-list
+              //-img.gradient(src='https://3dicons.sgp1.cdn.digitaloceanspaces.com/v1/dynamic/gradient/rocket-dynamic-gradient.png')
+              //-img.clay(src='https://3dicons.sgp1.cdn.digitaloceanspaces.com/v1/dynamic/clay/rocket-dynamic-clay.png')
+              //-img.color(src='https://3dicons.sgp1.cdn.digitaloceanspaces.com/v1/dynamic/color/rocket-dynamic-color.png')
+              //-img.premium(src='https://3dicons.sgp1.cdn.digitaloceanspaces.com/v1/dynamic/premium/rocket-dynamic-premium.png')
+      .description
+        .ui.header 分享
+        // Feel free to copy and paste the markup below
+        h2 至其他應用程式
+        a.sharRreplaceUrl.share-btn.share-btn-more(style='transform: scale(2, 2);' href='https://www.addtoany.com/share_save?linkurl=replace' title='More share options')
+          span.share-btn-icon
+          span.share-btn-text-sr More
+        h2 社群軟體
+        a.sharRreplaceUrl.share-btn.share-btn-branded.share-btn-facebook(href='https://www.facebook.com/sharer/sharer.php?u=replace' title='Share on Facebook')
+          span.share-btn-icon
+          span.share-btn-text Facebook
+        a.sharRreplaceUrl.share-btn.share-btn-branded.share-btn-reddit(href='http://www.reddit.com/submit?url=replace' title='Share on Reddit+')
+          span.share-btn-icon
+          span.share-btn-text Reddit
+        // Branded Tumblr button
+        a.sharRreplaceUrl.share-btn.share-btn-branded.share-btn-tumblr(href='https://www.tumblr.com/share/link?url=replace' title='Share on Tumblr')
+          span.share-btn-icon
+          span.share-btn-text Tumblr
+        // Divider only used for demo, don't copy this
+        .divider(role='presentation')
+        // Branded LinkedIn button
+        a.sharRreplaceUrl.share-btn.share-btn-branded.share-btn-linkedin(href='https://www.linkedin.com/shareArticle?mini=true&url=replace' title='Share on LinkedIn')
+          span.share-btn-icon
+          span.share-btn-text LinkedIn
+        // Branded Pinterest button
+        a.sharRreplaceUrl.share-btn.share-btn-branded.share-btn-pinterest(href='https://www.pinterest.com/pin/create/button/?url=replace' title='Share on Pinterest')
+          span.share-btn-icon
+          span.share-btn-text Pinterest
+        h2 電子郵件
+        a.sharRreplaceUrl.share-btn.share-btn-inverse.share-btn-email(href='mailto:?subject=ShareWebPages&body=replace' title='Share via Email')
+          span.share-btn-icon
+          span.share-btn-text Email
+        script.
+          (function(){
+          var sharRreplaceUrl = document.querySelectorAll(".sharRreplaceUrl");
+          if (sharRreplaceUrl) {
+          [].forEach.call(sharRreplaceUrl, function(domobj) {
+          domobj.href=String(domobj.href).replaceAll('replace', window.location.href);
+          });
+          }
+          var shareButtons = document.querySelectorAll(".share-btn");
+          if (shareButtons) {
+          [].forEach.call(shareButtons, function(button) {
+          button.addEventListener("click", function(event) {
+          var width = 650,
+          height = 450;
+          event.preventDefault();
+          window.open(this.href, 'Share Dialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,width='+width+',height='+height+',top='+(screen.height/2-height/2)+',left='+(screen.width/2-width/2));
+          });
+          });
+          }
+          })();
+    .actions
+      .ui.black.deny.button
+        | 關閉
+      .ui.positive.right.labeled.icon.button
+        | 好的
+        i.checkmark.icon
+  #tkn(style="display:none;")= tkn
+  script.
+    function FUCNmakeALLtableTOsemanticUI(){
+    var makeALLtableTOsemanticUI = document.getElementsByTagName("table");
+    for (let index = 0; index < makeALLtableTOsemanticUI.length; index++) {
+    const element = makeALLtableTOsemanticUI[index];
+    if (!element.classList.contains("ui")) {
+    element.classList.add("ui");
+    }
+    if (!element.classList.contains("celled")) {
+    element.classList.add("celled");
+    }
+    if (!element.classList.contains("table")) {
+    element.classList.add("table");
+    }
+    }
+    }
+  #jade_user_info
+  #jade_user_info_name #{var_jade_user_info_name}
+  #jade_user_info_username #{var_jade_user_info_username}
+  #jade_user_info_profileimage #{var_jade_user_info_profileimage}
+  #jade_user_info_choosedanimal #{var_jade_user_info_choosedanimal}
+  
+  .ui.tablet.computer.only.padded.grid
+      #headderBar.ui.top.fixed.borderless.fluid.menu
+        .ui.container
+          a.header(href="/" class='logo') 
+            img(src='/images/nckumath.svg' width='200px')
+          
+          if !ISuser
+            //我把這理複製到底下手機版
+            .header.active.item
+              | #{ttp}
+              //這一區是給後台上傳檔案用的 
+            a#alpha.item(href=`${alpha.uri}`)= alpha.txt
+            //^^^^^^^^^^^^ 上傳按鈕
+
+          .right.menu
+            a.item(href=`${browseHyperlinkedObjectsHorizontally1L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally1T }
+            a.item(href=`${browseHyperlinkedObjectsHorizontally2L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally2T }
+            a.item(href=`${browseHyperlinkedObjectsHorizontally3L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally3T }
+            .item
+              form.ui.form(onsubmit="event.target.querySelector('i').click();")
+                //TODO preventDefault
+                .inline.fields
+                  .field
+                    script(async='' src='https://cse.google.com/cse.js?cx=d613870f87198941e')
+                    .AugmentedExternalSearchModule.ui.icon.input
+                      .gcse-searchbox-only
+                      input(type='text' placeholder='Search...')
+                      i.AugmentedExternalSearchModuleF.inverted.circular.search.link.icon(onclick="var AugmentedExternalSearchModule=event.target.closest('.AugmentedExternalSearchModule');AugmentedExternalSearchModule.getElementsByTagName('input')[0].value=AugmentedExternalSearchModule.getElementsByTagName('input')[1].value;AugmentedExternalSearchModule.getElementsByTagName('button')[0].click();")
+  .ui.mobile.only.padded.grid(style="margin-bottom:-20px!important;")
+    #headderBarM.ui.top.fixed.borderless.fluid.huge.menu
+      a.header(href="/" class='logo logo-mobile') 
+          img(src='/images/nckumath.svg' width='150px')
+      if !ISuser
+        //我把這理複製到上面電腦版
+        .this_is_admin_only.header.active.item
+          | #{ttp}
+          //這一區是給後台上傳檔案用的
+        a#alpha.item(href=`${alpha.uri}`)= alpha.txt
+        //^^^^^^^^^^^^ 上傳按鈕
+      .right.menu
+        .item
+          button.ui.icon.toggle.basic.button
+            i.content.icon
+      .ui.vertical.borderless.fluid.menu
+        a.item(href=`${browseHyperlinkedObjectsHorizontally1L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally1T }
+        a.item(href=`${browseHyperlinkedObjectsHorizontally2L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally2T }
+        a.item(href=`${browseHyperlinkedObjectsHorizontally3L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally3T }
+        .item
+          form.ui.form
+            .field
+              .ui.icon.input
+                input(type='text' placeholder='Search...')
+                i.inverted.circular.search.link.icon(onclick='console.log("search...");$("#innerINDEX.ui.basic.modal").modal("show");')
+  .ui.main.container
+    h1.ui.header #{tp}
+    .ui.stackable.grid
+      main#htmlfromuser.eleven.wide.column!= dbhtml
+      aside.five.wide.column
+        if ExternalLargeButtonName
+          link(rel='stylesheet' href='/stylesheets/https___raw_githubusercontent_com_loup-brun_buttons_master_main.css')
+          each objectECBA, index in External_connection_button_array
+            .lambda
+              a.btn.btn-secondary(href=`${objectECBA.l}`  target='_blank')= objectECBA.b
+        else
+          h4 詳細資料
+          .ui.list
+            .item
+              i.map.marker.icon
+              .content
+                a.header 分類
+                .description= infoClass
+            .item
+              i.map.marker.icon
+              .content
+                a.header 更新時間
+                .description= infoDT
+            .item
+              i.map.marker.icon
+              .content
+                a.header 索引號碼/永久鏈結
+                if infoID&&infoID.includes('@')
+                  a.description(href=`${infoID.split('@')[1]}`)= infoID.split('@')[0]
+                else
+                  .description= infoID
+            .item
+              i.map.marker.icon
+              .content
+                a.header 其他
+                #docid.description= infoOther
+        .ui.divider
+        h4= labSW||'標籤'
+        if labSW
+          label.ui.primary.button
+            //TODO input check and security should always be implemented on the server side. The accept feature exists only to help users quickly filter relevant files and not having to sift through thousands of irrelevant files.
+            input(type='file' style='display:none;' accept=".docx")
+            span.zocial-windows
+            |  上傳word檔
+        else
+          #wslab.tagcloud
+            .ui.label
+              a(href='#') 載入中...
+        if urls
+          h4 相關頁面
+          p
+            a(href='#') Interesting Blog
+          p
+            a(href='#') Another Blog
+          p
+            a(href='#') Yet Another Interesting Blog
+        .ui.divider
+    footer.inner
+      // Social
+      .social
+        a.ui.facebook.button(href='#' onclick='$("html, body").animate({scrollTop:0}, "300");')
+          i.caret.square.up.outline.icon
+          | &emsp;回頂端
+          //為甚麼這裡需要一個全行空白啊?
+        a#snap_shoot_screen.ui.linkedin.button(href='#')
+          i.camera.retro.icon
+          | 截圖
+          //TODO dont scroll up yo y=0 and crop to best, dont cut side!
+          #snap_shoot_html2canvas_group(style='display: none;')
+            //button#snap_shoot_screen(style='display: none;') snap_shoot_screen
+            #snap_shoot_finish(style='display: none;') -1
+            #snap_shoot_canvas_tmp(style='display: none;')
+            //-#imgdownloadOK(style='display: none;') 這個快速差建下載完成的時候這個dom會被點集...沒
+        a.ui.youtube.button(href='#' onclick="$('#sharepop').modal('show');")
+          i.share.alternate.icon
+          | 分享
+          //TODO https://css-tricks.com/how-to-use-the-web-share-api/;https://codepen.io/ayoisaiah/pen/WBpzBo
+        a.ui.instagram.button( onclick="printJS('root', 'html')")
+          i.print.icon
+          | 列印
+          //TODO fix text x,y pos...
+          //OR use svg background
+          #snap_shoot_html2canvas_group_pdf(style='display: none;')
+            #snap_shoot_finish_pdf(style='display: none;') -1
+            #snap_shoot_canvas_tmp_pdf(style='display: none;')
+        a.pdfutils.ui.vk.button( onclick="downpdf()")
+          //(onclick="var pdf = new jsPDF('p','pt','a4');var margins = {top: 25,bottom: 60,left: 20,width: 522};pdf.addHTML(document.body, margins.top, margins.left, {},function() {console.log('???');/*saveData(pdf.output('Blob'), commercialFileName);*/pdf.save(commercialFileName);});")
+          i.file.pdf.outline.icon
+          | 另存為PDF
+          //TODO fix print poor css
+        // 09 Oct 2018 R.I.P. Google Plus :-P
+        // <a class="ui google plus button" href="#"><i class="google plus icon"></i>Google Plus</a>
+      .copyright
+        | &copy; #{moment().format('YYYY')} 成功大學數學系
+  // Free html personal blog theme "Samantha" (Semantic UI + jQuery) by Tim B. https://github.com/shawooha
+  //-label.ui.primary.button
+    input(type='file' style='display:none;')
+    span.zocial-windows
+    |  上傳word檔
+  //input(type='file')
+  textarea(rows='10' cols='50' style='display:none;')
+  #sol_html.ui.container
+  //TODO the form is garbage--------------------------------------------------------------所以到底留這幹嘛?從哪裡來的?反正不知道的東西不要動就對了
+  form(method='post', action='/users/register', enctype='multipart/form-data')
+  label.ui.primary.button(style='display:none;')
+    input.form-control(name='docxPayload', type='file' style='display:none;')
+    span.zocial-windows
+    |  上傳圖片...反正我確定這根片一點關西都沒有WWW到底在幹嘛
+  script(crossorigin="anonymous" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  script(crossorigin="anonymous" src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+  script(src='/jumbotron/js/index.js')
+
+  #wsport(style='display:none;')=wsport
+  if !ISuser
+    script(crossorigin="anonymous" src='/docx/upload.js')
+  if ProntEndBeautificationRendering
+    script.
+      FUCNmakeALLtableTOsemanticUI();
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.js' integrity='sha512-/fgTphwXa3lqAhN+I8gG8AvuaTErm1YxpUjbdCvwfTMyv8UZnFyId7ft5736xQ6CyQN4Nzr21lBuWWA9RTCXCw==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  //script(src='/javascripts/snapshoot.js'  type="module" )
+  //script(src='https://cdn.jsdelivr.net/npm/image-clipper@0.4.4/lib/index.min.js')
+  script(crossorigin="anonymous" src='/bundle/snapshoot.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.umd.min.js' integrity='sha512-5yTVoG0jFRsDhgYEoKrZCj5Bazxqa0VnETLN7k0SazQcARBsbgrSb6um+YpzWKNKV2kjb8bhna4fDfOk3YPr4Q==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  //-script(crossorigin="anonymous" type="module" src='https://cdn.jsdelivr.net/npm/vxe-table-plugin-export-pdf/fonts/source-han-sans-normal.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js' integrity='sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  script(crossorigin="anonymous" src='/build/bundle.js')
+  //-[上一行]我不確定，但是我猜這個東西經荒廢了
+  //script(src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.1/jspdf.debug.js' integrity='sha512-RbC6buTUvpHRNPIeunxmQXp66uAqxt/T5ACNM7qmUey/KvbihbhPFZpDcqmJCsc00+Zuwr/Cn3uqdJS+6i+Gng==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  //script(type="module" src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.0/jspdf.es.min.js' integrity='sha512-ADI0Y5mOlKdWvNoFMqemyhsXH3ij2AB8GY1Y9wPAu6p3TH3FXzGOyVuOguHBtm/rPdS5eBxVUlbrfGwmZq066g==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  //script(src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js' integrity='sha512-s/XK4vYVXTGeUSv4bRPOuxSDmDlTedEpMEcAQk0t/FMd9V6ft8iXdwSBxV0eD60c6w/tjotSlKu9J2AAW1ckTA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js' integrity='sha512-UcDEnmFoMh0dYHu0wGsf5SKB7z7i5j3GuXHCnb3i4s44hfctoLihr896bxM0zL7jGkcHQXXrJsFIL62ehtd6yQ==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  script(src='/ws/index.js')
+  script.
+    var commercialFileName = document.title + ((typeof moment !=='undefined') ? (`${moment().format('MMMM-Do-YYYY-h-mm-ss-a')}`) : 'could_not_load_current_moment') + '.pdf';
+    function saveData(blob, filename) {
+    console.log('wtf');
+    var a = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+    var url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url);
+    };
+    

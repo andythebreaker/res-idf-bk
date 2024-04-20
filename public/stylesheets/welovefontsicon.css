@@ -1,0 +1,57 @@
+/**https://codepen.io/jlalovi/pen/bIyAr */
+/** Inspired by: http://graphicburger.com/flat-design-ui-components */
+/** Line-chart and donut-chart made by @kseso https://codepen.io/Kseso/pen/phiyL */
+/**ref:https://github.com/TimPietrusky/weloveiconfonts */
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
+@import url(https://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial|brandico|fontelico|iconicfill|iconicstroke|maki|openwebicons|typicons);
+body {
+  background-color: #A7BAD1FF; }
+
+/************************************ FONTS *********************************** */
+/*@import url("https://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial") */
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif; }
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif; }
+
+/* zocial */
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif; }
+
+/*****andythebreaker */
+[class*="brandico-"]:before {
+  font-family: 'brandico', sans-serif; }
+
+[class*="fontelico-"]:before {
+  font-family: 'fontelico', sans-serif; }
+
+[class*="iconicfill-"]:before {
+  font-family: 'iconicfill', sans-serif; }
+
+[class*="iconicstroke-"]:before {
+  font-family: 'iconicstroke', sans-serif; }
+
+[class*="maki-"]:before {
+  font-family: 'maki', sans-serif; }
+
+[class*="openwebicons-"]:before {
+  font-family: 'openwebicons', sans-serif; }
+
+[class*="typicons-"]:before {
+  font-family: 'typicons', sans-serif; }
+
+.icon-cloudy:before {
+  content: "\e60f"; }
+
+.icon-sun:before {
+  content: "\e610"; }
+
+.icon-cloudy2:before {
+  content: "\e611"; }
+
+/********************************end fonts****************** */
+
+/*# sourceMappingURL=welovefontsicon.css.map */

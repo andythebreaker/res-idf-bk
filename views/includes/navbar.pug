@@ -1,0 +1,41 @@
+// script(src='/jumbotron/js/index.js')
+// style.
+//    @import url('/jumbotron/stylesheets/customStyle.css');
+// is needed.
+.ui.tablet.computer.only.padded.grid
+      #headderBar.ui.top.fixed.borderless.fluid.menu
+        .ui.container
+          a.header(href="/" class='logo') 
+            img(src='/images/nckumath.svg' width='200px')
+          .right.menu
+            a.item(href=`${browseHyperlinkedObjectsHorizontally1L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally1T }
+            a.item(href=`${browseHyperlinkedObjectsHorizontally2L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally2T }
+            a.item(href=`${browseHyperlinkedObjectsHorizontally3L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally3T }
+            .item
+              form.ui.form(onsubmit="event.target.querySelector('i').click();")
+                //TODO preventDefault
+                .inline.fields
+                  .field
+                    script(async='' src='https://cse.google.com/cse.js?cx=d613870f87198941e')
+                    .AugmentedExternalSearchModule.ui.icon.input
+                      .gcse-searchbox-only
+                      input(type='text' placeholder='Search...')
+                      i.AugmentedExternalSearchModuleF.inverted.circular.search.link.icon(onclick="var AugmentedExternalSearchModule=event.target.closest('.AugmentedExternalSearchModule');AugmentedExternalSearchModule.getElementsByTagName('input')[0].value=AugmentedExternalSearchModule.getElementsByTagName('input')[1].value;AugmentedExternalSearchModule.getElementsByTagName('button')[0].click();")
+.ui.mobile.only.padded.grid
+    #headderBarM.ui.top.fixed.borderless.fluid.huge.menu
+      a.header(href="/" class='logo logo-mobile') 
+          img(src='/images/nckumath.svg' width='150px')
+      .right.menu
+        .item
+          button.ui.icon.toggle.basic.button
+              i.content.icon
+      .ui.vertical.borderless.fluid.menu
+          a.item(href=`${browseHyperlinkedObjectsHorizontally1L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally1T }
+          a.item(href=`${browseHyperlinkedObjectsHorizontally2L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally2T }
+          a.item(href=`${browseHyperlinkedObjectsHorizontally3L}` target='_blank') #{ browseHyperlinkedObjectsHorizontally3T }
+          .item
+          form.ui.form
+              .field
+              .ui.icon.input
+                  input(type='text' placeholder='Search...')
+                  i.inverted.circular.search.link.icon(onclick='console.log("search...");$("#innerINDEX.ui.basic.modal").modal("show");')

@@ -1,0 +1,669 @@
+extends layout_angular
+
+block content
+  #jade_user_info.quickDisplayNone
+  #jade_user_info_name.quickDisplayNone #{var_jade_user_info_name}
+  #jade_user_info_username.quickDisplayNone #{var_jade_user_info_username}
+  #jade_user_info_profileimage.quickDisplayNone #{var_jade_user_info_profileimage}
+  #jade_user_info_choosedanimal.quickDisplayNone #{var_jade_user_info_choosedanimal}
+  //script(src='/ws/index.js')
+  link(rel='stylesheet', href='/stylesheets/FreebieInteractiveFlatDesignUIOnlyHTML5CSS3.css')
+  link(rel='stylesheet', href='/stylesheets/https_codepen_io_maggiben_pen_OPmLBW.css')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.min.css' rel='stylesheet')
+  .main-container
+      // HEADER
+      header.block
+        ul.header-menu.horizontal-list
+          li
+            a.header-menu-tab(href='/')
+              span.icon.fontawesome-home.scnd-font-color
+              | 回首頁
+          //li
+            a.header-menu-tab(href='#2')
+              span.icon.fontawesome-user.scnd-font-color
+              | 管理員帳號管理
+          //li
+            a.header-menu-tab(href='#3')
+              span.icon.entypo-flow-tree.scnd-font-color
+              | 管理員登入紀錄
+            a.header-menu-number(href='#4') 5
+          li
+            a.header-menu-tab(href='/users/logout')
+              span.icon.entypo-logout.scnd-font-color
+              | 登出
+        .profile-menu(style='cursor: pointer;' onclick="document.getElementById('calendar').style.display = (document.getElementById('calendar').style.display==='none')?'block':'none';")
+          p
+            | Me 
+            //a(href='#26')
+              span.entypo-down-open.scnd-font-color
+          .profile-picture.small-profile-picture
+            img(width='40px' alt='Anne Hathaway picture' src='http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg')
+      // LEFT-CONTAINER
+      .left-container.container
+        .menu-box.block
+          // MENU BOX (LEFT-CONTAINER)
+          h2.titular 首頁編輯群
+          ul.menu-box-menu
+            //https://weloveiconfonts.com/
+            //li
+              a.menu-box-tab(href='/main/addNewBooks')
+                span.icon.entypo-brush.scnd-font-color
+                | 新增「新書通報」
+                //-.menu-box-number 24
+            //li
+              a.menu-box-tab(href='/main/add_periodical')
+                span.icon.entypo-book-open.scnd-font-color
+                | 新增期刊
+                //-.menu-box-number 3
+            //li
+              a.menu-box-tab(href='/main/journals')
+                span.icon.entypo-sweden.scnd-font-color
+                | 期刊管理/編輯
+                //-.menu-box-number 5
+            li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                span.icon.entypo-cog.scnd-font-color
+                | 首頁動畫編輯
+                //.menu-box-number X
+            li
+              a.menu-box-tab(href='/main/docxUpload')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 添加最新消息
+            li
+              a.menu-box-tab(href='/main/home')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯移除最新消息
+            //li
+              a.menu-box-tab(href='/main/interlibraryCooperation')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯館際合作頁面
+            //li
+              a.menu-box-tab(href='/main/AddElectronicResources')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 新增電子資源
+            //li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯首頁投影片
+        .menu-box.block
+          // MENU BOX (LEFT-CONTAINER)
+          h2.titular 館際合作群
+          ul.menu-box-menu
+            //https://weloveiconfonts.com/
+            //li
+              a.menu-box-tab(href='/main/addNewBooks')
+                span.icon.entypo-brush.scnd-font-color
+                | 新增「新書通報」
+                //-.menu-box-number 24
+            //li
+              a.menu-box-tab(href='/main/add_periodical')
+                span.icon.entypo-book-open.scnd-font-color
+                | 新增期刊
+                //-.menu-box-number 3
+            //li
+              a.menu-box-tab(href='/main/journals')
+                span.icon.entypo-sweden.scnd-font-color
+                | 期刊管理/編輯
+                //-.menu-box-number 5
+            //li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                span.icon.entypo-cog.scnd-font-color
+                | 首頁動畫編輯
+                //-.menu-box-number X
+            //li
+              a.menu-box-tab(href='/main/docxUpload')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 添加最新消息
+            li
+              a.menu-box-tab(href='/main/interlibraryCooperation')
+                sapn.icon.entypo-switch.scnd-font-color
+                | 編輯館際合作頁面
+                .menu-box-number 可編輯
+            //li
+              a.menu-box-tab(href='/main/AddElectronicResources')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 新增電子資源
+            //li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯首頁投影片
+        //.donut-chart-block.block
+          //- DONUT CHART BLOCK (LEFT-CONTAINER)
+          h2.titular OS AUDIENCE STATS
+          .donut-chart
+            //- DONUT-CHART by @kseso https://codepen.io/Kseso/pen/phiyL
+            #porcion1.recorte
+              .quesito.ios(data-rel='21')
+            #porcion2.recorte
+              .quesito.mac(data-rel='39')
+            #porcion3.recorte
+              .quesito.win(data-rel='31')
+            #porcionFin.recorte
+              .quesito.linux(data-rel='9')
+            //- END DONUT-CHART by @kseso https://codepen.io/Kseso/pen/phiyL
+            p.center-date
+              | JUNE
+              br
+              span.scnd-font-color 2013
+          ul.os-percentages.horizontal-list
+            li
+              p.ios.os.scnd-font-color iOS
+              p.os-percentage
+                | 21
+                sup %
+            li
+              p.mac.os.scnd-font-color Mac
+              p.os-percentage
+                | 48
+                sup %
+            li
+              p.linux.os.scnd-font-color Linux
+              p.os-percentage
+                | 9
+                sup %
+            li
+              p.win.os.scnd-font-color Win
+              p.os-percentage
+                | 32
+                sup %
+        //.line-chart-block.block.clear
+          //- LINE CHART BLOCK (LEFT-CONTAINER)
+          .line-chart
+            //- LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL
+            .grafico
+              ul.eje-y
+                li(data-ejey='30')
+                li(data-ejey='20')
+                li(data-ejey='10')
+                li(data-ejey='0')
+              ul.eje-x
+                li Apr
+                li May
+                li Jun
+              span(data-valor='25')
+                span(data-valor='8')
+                  span(data-valor='13')
+                    span(data-valor='5')
+                      span(data-valor='23')
+                        span(data-valor='12')
+                          span(data-valor='15')
+            //- END LINE-CHART by @kseso https://codepen.io/Kseso/pen/phiyL
+          ul.time-lenght.horizontal-list
+            li
+              a.time-lenght-btn(href='#14') Week
+            li
+              a.time-lenght-btn(href='#15') Month
+            li
+              a.time-lenght-btn(href='#16') Year
+          ul.month-data.clear
+            li
+              p
+                | APR
+                span.scnd-font-color  2013
+              p
+                span.entypo-plus.increment  
+                | 21
+                sup %
+            li
+              p
+                | MAY
+                span.scnd-font-color  2013
+              p
+                span.entypo-plus.increment  
+                | 48
+                sup %
+            li
+              p
+                | JUN
+                span.scnd-font-color  2013
+              p
+                span.entypo-plus.increment  
+                | 35
+                sup %
+        //.media.block
+          //-- MEDIA (LEFT-CONTAINER)
+          #media-display
+            a.media-btn.play(href='#23')
+              span.fontawesome-play
+          .media-control-bar
+            a.media-btn.play(href='#23')
+              span.fontawesome-play.scnd-font-color
+            p.time-passed
+              | 4:15 
+              span.time-duration.scnd-font-color / 9:23
+            a.media-btn.volume(href='#24')
+              span.fontawesome-volume-up.scnd-font-color
+            a.media-btn.resize(href='#25')
+              span.fontawesome-resize-full.scnd-font-color
+        //ul.social.horizontal-list.block
+          //-- SOCIAL (LEFT-CONTAINER)
+          li.facebook
+            p.icon
+              span.zocial-facebook
+            p.number 248k
+          li.twitter
+            p.icon
+              span.zocial-twitter
+            p.number 30k
+          li.googleplus
+            p.icon
+              span.zocial-googleplus
+            p.number 124k
+          li.mailbox
+            p.icon
+              span.fontawesome-envelope
+            p.number 89k
+      // MIDDLE-CONTAINER
+      .middle-container.container
+        .menu-box.block
+          // MENU BOX (LEFT-CONTAINER)
+          h2.titular 新書通報群
+          ul.menu-box-menu
+            //https://weloveiconfonts.com/
+            li
+              a.menu-box-tab(href='/main/addNewBooks')
+                span.icon.entypo-brush.scnd-font-color
+                | 新增「新書通報」
+                .menu-box-number 可編輯
+            //li
+              a.menu-box-tab(href='/main/add_periodical')
+                span.icon.entypo-book-open.scnd-font-color
+                | 新增期刊
+                //-.menu-box-number 3
+            //li
+              a.menu-box-tab(href='/main/journals')
+                span.icon.entypo-sweden.scnd-font-color
+                | 期刊管理/編輯
+                //-.menu-box-number 5
+            //li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                span.icon.entypo-cog.scnd-font-color
+                | 首頁動畫編輯(未開放)
+                .menu-box-number X
+            //li
+              a.menu-box-tab(href='/main/docxUpload')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 添加最新消息
+            //li
+              a.menu-box-tab(href='/main/interlibraryCooperation')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯館際合作頁面
+            //li
+              a.menu-box-tab(href='/main/AddElectronicResources')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 新增電子資源
+            //li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯首頁投影片
+        .menu-box.block
+          // MENU BOX (LEFT-CONTAINER)
+          h2.titular 電子資源群
+          ul.menu-box-menu
+            //https://weloveiconfonts.com/
+            //li
+              a.menu-box-tab(href='/main/addNewBooks')
+                span.icon.entypo-brush.scnd-font-color
+                | 新增「新書通報」
+                .menu-box-number 可編輯
+            //li
+              a.menu-box-tab(href='/main/add_periodical')
+                span.icon.entypo-book-open.scnd-font-color
+                | 新增期刊
+                //-.menu-box-number 3
+            //li
+              a.menu-box-tab(href='/main/journals')
+                span.icon.entypo-sweden.scnd-font-color
+                | 期刊管理/編輯
+                //-.menu-box-number 5
+            //li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                span.icon.entypo-cog.scnd-font-color
+                | 首頁動畫編輯(未開放)
+                .menu-box-number X
+            //li
+              a.menu-box-tab(href='/main/docxUpload')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 添加最新消息
+            //li
+              a.menu-box-tab(href='/main/interlibraryCooperation')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯館際合作頁面
+            li
+              a.menu-box-tab(href='/main/AddElectronicResources')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 新增電子資源
+            li
+              a.menu-box-tab(href='/main/editR')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯電子資源
+            //li
+              a.menu-box-tab(href='/main/swipeEDIT')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 編輯首頁投影片
+        //.profile.block
+          //-- PROFILE (MIDDLE-CONTAINER)
+          a.add-button(href='#28')
+            span.icon.entypo-plus.scnd-font-color
+          .profile-picture.big-profile-picture.clear
+            img(width='150px' alt='Anne Hathaway picture' src='http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg')
+          h1.user-name Anne Hathaway
+          .profile-description
+            p.scnd-font-color Lorem ipsum dolor sit amet consectetuer adipiscing
+          ul.profile-options.horizontal-list
+            li
+              a.comments(href='#40')
+                p
+                  span.icon.fontawesome-comment-alt.scnd-font-color
+                  | 23
+            p
+            li
+              a.views(href='#41')
+                p
+                  span.icon.fontawesome-eye-open.scnd-font-color
+                  | 841
+            p
+            li
+              a.likes(href='#42')
+                p
+                  span.icon.fontawesome-heart-empty.scnd-font-color
+                  | 49
+            p
+        //.weather.block.clear
+          //- WEATHER (MIDDLE-CONTAINER)
+          h2.titular
+            span.icon.entypo-rocket
+            strong 最新消息
+            | /由開發人員發佈
+          .current-day
+            p.current-day-date 編輯人員只要看
+            p.current-day-temperature
+              | 左邊
+              span.icon-cloudy
+          ul.next-days
+            li
+              a(href='#43')
+                p.next-days-date
+                  span.day 需求
+                  span.scnd-font-color 新書通報
+                p.next-days-temperature
+                  | 完成
+                  span.icon.icon-cloudy.scnd-font-color
+            li
+              a(href='#45')
+                p.next-days-date
+                  span.day 需求
+                  span.scnd-font-color 期刊服務
+                p.next-days-temperature
+                  | 完成
+                  span.icon.icon-cloudy2.scnd-font-color
+            li
+              a(href='#45')
+                p.next-days-date
+                  span.day 功能
+                  span.scnd-font-color 首頁動畫編輯
+                p.next-days-temperature
+                  | 開發中
+                  span.icon.icon-cloudy2.scnd-font-color
+            li
+              a(href='#45')
+                p.next-days-date
+                  span.day 功能
+                  span.scnd-font-color 開放時間編輯
+                p.next-days-temperature
+                  | 未開發
+                  span.icon.icon-cloudy2.scnd-font-color
+            li
+              a(href='#46')
+                p.next-days-date
+                  span.day 需求
+                  span.scnd-font-color 最新消息
+                p.next-days-temperature
+                  | 完成(-m/t)
+                  span.icon.icon-cloudy.scnd-font-color
+            li
+              a(href='')
+                p.next-days-date
+                  span.day 功能
+                  span.scnd-font-color 簡介規則
+                p.next-days-temperature
+                  | 未開發
+                  span.icon.icon-sun.scnd-font-color
+            li
+              a(href='')
+                p.next-days-date
+                  span.day THU
+                  span.scnd-font-color 04/07
+                p.next-days-temperature
+                  | 29º
+                  span.icon.icon-sun.scnd-font-color
+        //.tweets.block
+          //- TWEETS (MIDDLE-CONTAINER)
+          h2.titular
+            span.icon.zocial-twitter
+            | LATEST TWEETS
+          .tweet.first
+            p
+              | Ice-cream trucks only play music when out of ice-cream. Well played dad. On 
+              a.tweet-link(href='#17') @Quora
+            p
+              a.time-ago.scnd-font-color(href='#18') 3 minutes ago
+          .tweet
+            p
+              | We are in the process of pushing out all of the new CC apps! We will tweet again once they are live 
+              a.tweet-link(href='#19') #CreativeCloud
+            p
+              a.scnd-font-color(href='#20') 6 hours ago
+        //ul.social.block
+          //-- SOCIAL (MIDDLE-CONTAINER)
+          li
+            a(href='#50')
+              .facebook.icon
+                span.zocial-facebook
+              h2.facebook.titular SHARE TO FACEBOOK
+          li
+            a(href='#51')
+              .twitter.icon
+                span.zocial-twitter
+              h2.twitter.titular SHARE TO TWITTER
+          li
+            a(href='#52')
+              .googleplus.icon
+                span.zocial-googleplus
+              h2.googleplus.titular SHARE TO GOOGLE+
+      // RIGHT-CONTAINER
+      .right-container.container
+        .menu-box.block
+          // MENU BOX (LEFT-CONTAINER)
+          h2.titular 期刊編輯群
+          ul.menu-box-menu
+            //https://weloveiconfonts.com/
+            //li
+              a.menu-box-tab(href='/main/addNewBooks')
+                span.icon.entypo-brush.scnd-font-color
+                | 新增「新書通報」
+                .menu-box-number 可編輯
+            li
+              a.menu-box-tab(href='/main/add_periodical')
+                span.icon.entypo-book-open.scnd-font-color
+                | 新增期刊
+                //-.menu-box-number 3
+            li
+              a.menu-box-tab(href='/main/journals')
+                span.icon.entypo-sweden.scnd-font-color
+                | 期刊管理/編輯
+                //-.menu-box-number 5
+        .menu-box.block
+          // MENU BOX (LEFT-CONTAINER)
+          h2.titular 首頁側欄群
+          ul.menu-box-menu
+            li
+              a.menu-box-tab(href='/main/administrativeDocumentEditing')
+                sapn.icon.entypo-chart-line.scnd-font-color
+                | 行政服務文件
+                .menu-box-number 可編輯
+            li
+              a.menu-box-tab(href='/main/time')
+                span.icon.entypo-sweden.scnd-font-color
+                | 開館時間
+                .menu-box-number 可編輯
+            li
+              a.menu-box-tab(href='/main/mp4upload')
+                span.icon.entypo-sweden.scnd-font-color
+                | 影片中心
+        //.join-newsletter.block
+          //- JOIN NEWSLETTER (RIGHT-CONTAINER)
+          h2.titular JOIN THE NEWSLETTER
+          .input-container
+            input.email.text-input(type='text' placeholder='yourname@gmail.com')
+            .input-icon.envelope-icon-newsletter
+              span.fontawesome-envelope.scnd-font-color
+          a.subscribe.button(href='#21') SUBSCRIBE
+        //.account.block
+          //- ACCOUNT (RIGHT-CONTAINER)
+          h2.titular SIGN IN TO YOUR ACCOUNT
+          .input-container
+            input.email.text-input(type='text' placeholder='yourname@gmail.com')
+            .input-icon.envelope-icon-acount
+              span.fontawesome-envelope.scnd-font-color
+          .input-container
+            input.password.text-input(type='text' placeholder='Password')
+            .input-icon.password-icon
+              span.fontawesome-lock.scnd-font-color
+          a.sign-in.button(href='#22') SIGN IN
+          p.scnd-font-color Forgot Password?
+          a.fb-sign-in(href='58')
+            p
+              span.fb-border
+                span.icon.zocial-facebook
+              | Sign in with Facebook
+        //.loading.block
+          //- LOADING (RIGHT-CONTAINER)
+          .progress-bar.downloading
+          p
+            span.icon.fontawesome-cloud-download.scnd-font-color
+            | Downloading...
+          p.percentage
+            | 81
+            sup %
+          .progress-bar.uploading
+          p
+            span.icon.fontawesome-cloud-upload.scnd-font-color
+            | Uploading...
+          p.percentage
+            | 43
+            sup %
+        //.calendar-day.block
+          //- CALENDAR DAY (RIGHT-CONTAINER)
+          .arrow-btn-container
+            a.arrow-btn.left(href='#200')
+              span.icon.fontawesome-angle-left
+            h2.titular WEDNESDAY
+            a.arrow-btn.right(href='#201')
+              span.icon.fontawesome-angle-right
+          p.the-day 26
+          a.add-event.button(href='#27') ADD EVENT
+        //.calendar-month.block
+          //- CALENDAR MONTH (RIGHT-CONTAINER)
+          .arrow-btn-container
+            a.arrow-btn.left(href='#202')
+              span.icon.fontawesome-angle-left
+            h2.titular APRIL 2013
+            a.arrow-btn.right(href='#203')
+              span.icon.fontawesome-angle-right
+          table.calendar
+            thead.days-week
+              tr
+                th S
+                th M
+                th T
+                th W
+                th R
+                th F
+                th S
+            tbody
+              tr
+                td
+                td
+                td
+                td
+                td
+                td
+                td
+                  a.scnd-font-color(href='#100') 1
+              tr
+                td
+                  a.scnd-font-color(href='#101') 2
+                td
+                  a.scnd-font-color(href='#102') 3
+                td
+                  a.scnd-font-color(href='#103') 4
+                td
+                  a.scnd-font-color(href='#104') 5
+                td
+                  a.scnd-font-color(href='#105') 6
+                td
+                  a.scnd-font-color(href='#106') 7
+                td
+                  a.scnd-font-color(href='#107') 8
+              tr
+                td
+                  a.scnd-font-color(href='#108') 9
+                td
+                  a.scnd-font-color(href='#109') 10
+                td
+                  a.scnd-font-color(href='#110') 11
+                td
+                  a.scnd-font-color(href='#111') 12
+                td
+                  a.scnd-font-color(href='#112') 13
+                td
+                  a.scnd-font-color(href='#113') 14
+                td
+                  a.scnd-font-color(href='#114') 15
+              tr
+                td
+                  a.scnd-font-color(href='#115') 16
+                td
+                  a.scnd-font-color(href='#116') 17
+                td
+                  a.scnd-font-color(href='#117') 18
+                td
+                  a.scnd-font-color(href='#118') 19
+                td
+                  a.scnd-font-color(href='#119') 20
+                td
+                  a.scnd-font-color(href='#120') 21
+                td
+                  a.scnd-font-color(href='#121') 22
+              tr
+                td
+                  a.scnd-font-color(href='#122') 23
+                td
+                  a.scnd-font-color(href='#123') 24
+                td
+                  a.scnd-font-color(href='#124') 25
+                td
+                  a.today(href='#125') 26
+                td
+                  a(href='#126') 27
+                td
+                  a(href='#127') 28
+                td
+                  a(href='#128') 29
+              tr
+                td
+                  a(href='#129') 30
+                td
+                td
+                td
+                td
+                td
+                td
+        #calendar.calendar.block.otherplugincalendar(calendar='' style="display:none;")
+        // end calendar-month block
+        // end right-container
+        // end main-container
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js' integrity='sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js")
+  script(src='/javascripts/calendar.js')

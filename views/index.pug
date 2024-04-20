@@ -1,0 +1,385 @@
+extends layout
+
+block contentHEAD
+  meta(charset='utf-8')
+  meta(content='IE=edge,chrome=1' http-equiv='X-UA-Compatible')
+  meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no')
+  meta(name='description' content='成功大學數學系圖書館網站')
+  meta(name='keywords' content='成功大學, 數學系, 圖書館, 成大')
+  meta(name='author' content='成功大學數學系')
+  meta(name='theme-color' content='#DDB98B')
+  meta(property='og:title' content='andythebreaker_BLOG')
+  meta(property='og:description' content='andythebreaker_BLOG有 328 平方公尺(大約佔樓層面積一半)的閱覽室，目前藏書約 24330 冊，期刊總類約 226 種，圖書室採開架式供師生借閱、資料查詢、影印等使用。')
+  meta(property='og:type' content='website')
+  meta(property='og:image' content='images/california-brown-wooden-shelves-in-a-library-usa-usa-image.jpg')
+  //下面這是https://search.google.com/search-console
+  meta(name='google-site-verification' content='BrI99umIX2P1J6KdnYCGGZBwO8KeU8eo_AwDCee4hfo')
+  title #{ title }
+  link(rel='stylesheet' href='./jumbotron/stylesheets/normalize.css')
+  link(rel='stylesheet' href='./jumbotron/stylesheets/main.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css' type='text/css')
+  link(rel='stylesheet' href='./jumbotron/stylesheets/index.css')
+  style.
+    @import url('./jumbotron/stylesheets/customStyle.css');
+  link(rel='stylesheet' href='https://unpkg.com/swiper@7/swiper-bundle.min.css')
+  style.
+    @import url('./jumbotron/stylesheets/swipe.css');
+  style.
+    @import url('./jumbotron/stylesheets/open.css');
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.0/css/hover-min.css' integrity='sha512-glciccPoOqr5mfDGmlJ3bpbvomZmFK+5dRARpt62nZnlKwaYZSfFpFIgUoD8ujqBw4TmPa/F3TX28OctJzoLfg==' crossorigin='anonymous')
+  link(rel='stylesheet', href='/stylesheets/foot.css')
+  link(rel='stylesheet' href="/PagingClassification/index/rwd.css")
+  // Global site tag (gtag.js) - Google Analytics
+  script(async='' src='https://www.googletagmanager.com/gtag/js?id=G-EH433MHBFK')
+  script.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EH433MHBFK');
+
+
+block content
+  if !isADMIN
+    #innerINDEX.ui.basic.modal
+      .ui.icon.header
+        i.archive.icon
+        |     敬請期待
+      .content
+        p
+          | 這個功能仍在開發中，將於不久後上線
+      .actions
+        .ui.red.basic.cancel.inverted.button
+          i.remove.icon
+          |       關閉
+        .ui.green.ok.inverted.button
+          i.checkmark.icon
+          |       好的
+    //-
+      編輯人員注意:
+      水平尋覽條須於手機與電腦版分別設定!
+    include includes/navbar.pug
+    // 投影片
+    .ui.grid(class="slide")
+      .sixteen.wide.column
+        // Slider main container
+        .swiper
+          // Additional required wrapper
+          .swiper-wrapper
+            // Slides
+            each z, ix in swl
+              .swiper-slide
+                .ui.massive.message.masterVision(style=`background-image: url("${z.pic}");`)
+                  .ui.container.swipe_hight_BGCRTL
+                    h1.ui.huge.header=z.topic
+                    p
+                      each this_is_a_new_line in z.txt.split(/\r\n|\r|\n/)
+                        | #{this_is_a_new_line}
+                        br
+                    - var n = 0;
+                    while n < ((z.btons)?z.btons.length:0)
+                      button.ui.large.primary.button(href=`${z.btons[n+1]}` onclick=`window.location.href = "${z.btons[n+1]}";`)=(String(z.btons[n])+" »")
+                      h6(style="display:none;")= n++ 
+                      h6(style="display:none;")= n++ 
+          // If we need pagination
+          .swiper-pagination
+          // If we need navigation buttons
+          .swiper-button-prev
+          .swiper-button-next
+          // If we need scrollbar
+          //- .swiper-scrollbar
+      .ten.wide.column
+      .six.wide.column
+    .section.one
+      .ui.container
+        //- h1 Feature
+        .ui.four.cards.stackable.doubling.grid
+          .card
+            .ui.content.aLikeMouse(onClick="window.location.href = '/newbooks';")
+              h2.ui.icon.header
+                i.book.icon
+                .content #{ functionButtonMainText1 }
+                  .sub.header
+                    | 查看當月新書清單與歷史「新書上架」紀錄，可連結至總圖書目資料
+          .card
+            .ui.content.aLikeMouse(onClick="window.location.href = '/journals';")
+              h2.ui.icon.header
+                i.block.layout.icon
+                .content #{ functionButtonMainText2 }
+                  .sub.header
+                    | 提供電子期刊與紙本期刊之資源，部分紙本合訂集位於總圖書館
+          .card
+            .ui.content.aLikeMouse(onClick="window.location.href = '/inner?ic=g';")
+              h2.ui.icon.header
+                i.handshake.outline.icon
+                .content #{ functionButtonMainText3 }
+                  .sub.header
+                    | 數學系教職員可進入填寫跨館借閱表單，跨館借閱書籍到後將通知您
+          .card
+            .ui.content.aLikeMouse(onClick="window.location.href = '/electronic-resources';")
+              h2.ui.icon.header
+                i.file.alternate.icon
+                .content #{ functionButtonMainText4 }
+                  .sub.header
+                    | 閱覽校內外電子書與常用連結，部分資源可提供下載，連至外部網站以取得更多資料
+    // 為了版面簡潔我暫時把地圖移到下方footer了 sorry
+    //- .section.two
+    //-   .ui.container.NavigationBar
+    //-     h1
+    //-       i.location.arrow.icon
+    //-       | 成功大學數學系 系館一樓
+    //-     a#qrcode.ui.basic.massive.image.label.brown.hvr-grow-shadow(href='https://goo.gl/maps/bBXnC5XJRsmPSXUj6' target='_blank')
+    //-       //
+    //-         這是一個地圖按鈕
+    //-         含有一個qrcode
+    //-         請用qrcodeMapButton.js啟用他
+    //-         需要semantic-ui與qrcode.js套件
+    //-         屬性href就是按鈕的連結
+    //-         內文是qrcode的內容
+    //-         author:andythebreaker
+    //-       | https://nckumap.ncku.edu.tw/map.php?type=activity&bid=B014&rid=B01401001&floor=1F
+  else 
+    .ui.card(style="margin-left:10vw")
+      br
+      br
+      h2 編輯
+      h5 請用桌上型電腦
+  .section.three
+    .ui.container.content
+      .ui.stackable.doubling.grid
+        // Middle Content
+        .twelve.wide.column.mobile.only
+          .ui.dividing.header 
+           | 最新消息
+          .ui.relaxed.divided.list
+            each eps, index in ps
+              .item(align='left')
+                .right.floated.content
+                  a.ui.button(href=`/inner?id=${eps.uri}&pid=${eps.id}&ic=l`) 詳全文...
+                    //- img.ui.avatar.image.middle.aligned(src=`./tool/t2i?txt=${margin*4+index}`)
+                img.ui.avatar.image.middle.aligned(src=`./images/0${(margin*4+index)%3+1}.svg`,width='200px')
+
+                .content
+                  a.header= eps.tp
+                  .description= eps.ab
+          //start copy ******************************************************************************************************************
+          //我把epc shift成正整數數列比較好閱讀，我不確定你的button功能是啥你確定一下XD AndyLee
+          //RE:我其實不記得，按照記憶，是分頁，一頁最多4個最新消息....andythebreaker20220312
+          //LOGIC-HINT
+          //https://library.math.ncku.edu.tw/?page=1
+          //如上URL，page號碼是最新消息的分頁
+          //按下方按鈕可切換page num.
+          .ui.divider
+          .ui.buttons
+            button.ui.button(onclick="var pgs=event.target.parentElement.getElementsByTagName('a');for(var i=0;i<pgs.length;i++){if(parseInt(pgs[i].innerText,10)-1<0){break;}else{pgs[i].innerText=parseInt(pgs[i].innerText,10);}}") Previous
+            if margin>4||pc.length
+              each epc in pc.slice(margin-2<0?0:margin-2,margin+3)
+                a.ui.button(href=`?page=${epc}` class=margin === epc ? "blue" : "")= epc+1
+            else
+              each epc in pc
+                a.ui.button(href=`?page=${epc}` class=margin === epc ? "blue" : "")= epc+1
+            button.ui.button(onclick=`var pgs=event.target.parentElement.getElementsByTagName('a');for(var i=pgs.length-1;i>=0;i--){if(parseInt(pgs[i].innerText,10)+1>=${pc.length}){break;}else{pgs[i].innerText=parseInt(pgs[i].innerText,10)+1;}}`) Next
+          //end copy ******************************************************************************************************************
+        .twelve.wide.column.tablet.computer.only
+          .ui.header 
+           | 最新消息
+          div(align='center')
+            .ui.divider
+            .ui.items
+              each eps, index in ps
+                .item(align='left')
+                  .ui.tiny.image
+                    //- img(src=`./tool/t2i?txt=${margin*4+index}`)
+                    img(src=`./images/0${(margin*4+index)%3+1}.svg`,width='200px')
+                  .content
+                    a.header= eps.tp
+                    .meta
+                      span
+                        i.calendar.icon
+                        | #{String(eps.YYYY)+'/'+addZero(eps.M||0,2)+'/'+addZero(eps.D||0,2)+'-'+addZero(eps.h||0,2)+':'+addZero(eps.mm||0,2)}
+                        //i.tag.icon= eps.lab
+                        each epl, index in eps.lab
+                          i.tag.icon
+                          | #{epl}
+                        i.user.icon
+                        |  管理員
+                    .description(align='justify')
+                      p= eps.ab
+                    .extra
+                      a.ui.blue.right.floated.button(href=`/inner?id=${eps.uri}&pid=${eps.id}&ic=l`) 詳全文...
+                      //這裡是刪除、編輯最新消息；迷之音:難得認真打註解(遠目...)andythebreaker20220312
+                      if isADMIN
+                        //LOGIC-HINT
+                        //eps.id是models/least.js這個DB
+                        //eps.uri
+                        a.ui.blue.right.floated.button(href=`/main/home/del?id=${eps.id}`) 刪除
+                        a.ui.blue.right.floated.button(href=`/main/docxUpload?edit=yes&id=${eps.id}&delOLDid=${eps.id}`) 編輯
+                .ui.divider
+            //start copy ******************************************************************************************************************
+            //- .ui.divider // unnecessary by AndyLee
+            .ui.buttons
+              button.ui.button(onclick="var pgs=event.target.parentElement.getElementsByTagName('a');for(var i=0;i<pgs.length;i++){if(parseInt(pgs[i].innerText,10)-1<0){break;}else{pgs[i].innerText=parseInt(pgs[i].innerText,10);}}") Previous
+              if margin>4||pc.length
+                each epc in pc.slice(margin-2<0?0:margin-2,margin+3)
+                  a.ui.button(href=`?page=${epc}` class=margin === epc ? "blue" : "")= epc+1
+              else
+                each epc in pc
+                  a.ui.button(href=`?page=${epc}` class=margin === epc ? "blue" : "")= epc+1
+              button.ui.button(onclick=`var pgs=event.target.parentElement.getElementsByTagName('a');for(var i=pgs.length-1;i>=0;i--){if(parseInt(pgs[i].innerText,10)+1>=${pc.length}){break;}else{pgs[i].innerText=parseInt(pgs[i].innerText,10)+1;}}`) Next
+            //end copy ******************************************************************************************************************
+        // Right Sidebar
+        
+
+        // 桌面版在手機上很棒啊～為啥要搞這麼複雜分手機電腦版XD AndyLee
+        // 回:痾....humm....(rwd的css好像是後來才加上去的)....我的鍋....andythebreaker20220312
+        if !isADMIN
+          .four.wide.column
+            #copyRightSidebar_mobile2desktop.ui.fluid.vertical.menu.bdcolor
+              a.header.item(href='#') 常用連結
+              if ade!=='error'
+                each adeval, adeindex in ade
+                  a.item(data-adeindex=adeindex href=adeval?(adeval.uri?adeval.uri:(adeval.doclink?`/inner?ic=ade&pid=${adeval.id}&id=${adeval.doclink}`:'#')):'#' target='_blank') #{adeval?adeval.name:' '}
+                  //pid是物件的；id是文件的
+              else 
+                a.item(href="#" data-errorcode="DBerror") &ensp;
+            #copyRightSidebar_opentime.ui.segments.bdcolor
+              .ui.header.segment
+                section.openinghours
+                  //
+                    https://codepen.io/bengoddard/pen/boeEy
+                    這是一個模組，修改自上方參考資料
+                    由andythebreaker修改
+                    須包含open.js、open.css
+                    使用semantic-ui
+                  .openinghourscontent.section
+                    .header
+                      // h2>Opening hours</h2
+                      h2 開館時間
+                      #open-status.ui.segment
+                        small.openorclosed We are
+                    #openTimeChartLoaded_target.OpeningHoursChineseNameFormDefinitionCollection(style='display:none;')
+                      // 這裡不要動，這是"休館"字樣的中文字形，js沒有例外處理
+                      .shutdownName1(style='display:none;') 休
+                      .shutdownName2(style='display:none;') 館
+                    
+
+                    //例假日遇到平日會有bug喔～～ AndyLee
+                    //回:慘，我應該要呼叫行政院人事行政的api....andythebreaker，我先發issue(笑)....晚點處理
+                    table#the_open_chart_data.opening-hours-table.ui.unstackable.celled.table.center.aligned
+                      thead
+                        tr
+                          th.center.aligned 星期
+                          th(colspan='3') 開放時間
+                      tbody
+                        tr#Monday(itemprop='openingHours' title='Open Monday at 9am to 6pm')
+                          td#monday_chinese 一
+                          td.opens.no_right_border #{`${ot[0].oh}:${ot[0].o}`}
+                          td.no_right_border.no_left_border(class={shutdown: ot[0].cl}) -
+                          td.closes.no_left_border #{`${ot[0].ch}:${ot[0].cm}`}
+                        tr#Tuesday(itemprop='openingHours' title='Open Tuesday at 9am to 6pm')
+                          td#tuesday_chinese 二
+                          td.opens.no_right_border #{`${ot[1].oh}:${ot[1].o}`}
+                          td.no_right_border.no_left_border(class={shutdown: ot[1].cl}) -
+                          td.closes.no_left_border #{`${ot[1].ch}:${ot[1].cm}`}
+                        tr#Wednesday(itemprop='openingHours' title='Open Wednesday at 9am to 6pm')
+                          td#wednesday_chinese 三
+                          td.opens.no_right_border #{`${ot[2].oh}:${ot[2].o}`}
+                          td.no_right_border.no_left_border(class={shutdown: ot[2].cl}) -
+                          td.closes.no_left_border #{`${ot[2].ch}:${ot[2].cm}`}
+                        tr#Thursday(itemprop='openingHours' title='Open Thursday at 9am to 8pm')
+                          td#thursday_chinese 四
+                          td.opens.no_right_border #{`${ot[3].oh}:${ot[3].o}`}
+                          td.no_right_border.no_left_border(class={shutdown: ot[3].cl}) -
+                          td.closes.no_left_border #{`${ot[3].ch}:${ot[3].cm}`}
+                        tr#Friday(itemprop='openingHours' title='Open Friday at 9am to 6pm')
+                          td#friday_chinese 五
+                          td.opens.no_right_border #{`${ot[4].oh}:${ot[4].o}`}
+                          td.no_right_border.no_left_border(class={shutdown: ot[4].cl}) -
+                          td.closes.no_left_border #{`${ot[4].ch}:${ot[4].cm}`}
+                        //
+                          如果當日閉館
+                          class="no_right_border no_left_border"的地方
+                          要添加class:shutdown
+                          然後開館時間閉館時間就不重要了
+                        tr#Saturday(itemprop='openingHours' title='Open Saturday at 10am to 11pm')
+                          td#saturday_chinese 六
+                          td.opens.no_right_border #{`${ot[5].oh}:${ot[5].o}`}
+                          td.no_right_border.no_left_border(class={shutdown: ot[5].cl}) -
+                          td.closes.no_left_border #{`${ot[5].ch}:${ot[5].cm}`}
+                        tr#Sunday(itemprop='openingHours' title='Open Sunday at 11am to 4pm')
+                          td#sunday_chinese 日
+                          td.opens.no_right_border #{`${ot[6].oh}:${ot[6].o}`}
+                          td.no_right_border.no_left_border(class={shutdown: ot[6].cl}) -
+                          td.closes.no_left_border #{`${ot[6].ch}:${ot[6].cm}`}
+                    // 按鈕已廢止
+                    button(style='cursor: pointer;display:none;' title='Make an Apointment Online' data-appointlet='u387') Make an Apointment Online
+                    script.
+                      (function (e, t, n, r) {
+                      if (e) return;
+                      t._appt = true;
+                      var i = n.createElement(r),
+                      s = n.getElementsByTagName(r)[0];
+                      i.async = true;
+                      i.src = './jumbotron/js/https_dje0x8zlxc38k_cloudfront_net_loaders_s-min.js';
+                      s.parentNode.insertBefore(i, s)
+                      })(window._appt, window, document, "script")
+                      
+  .ui.hidden.divider
+  //- .ui.divider
+  footer.jsx-2061850338.ffoot
+    .ui.vertical.segment(style='padding-top: 4rem; padding-bottom: 4rem; background-color: rgb(245, 245, 245);')
+      .ui.container
+        .ui.stackable.grid
+          .row
+            .seven.wide.column(class="contact")
+              h3.ui.header &copy; 2022 成功大學數學系
+              i.phone.icon
+              | 服務電話：06-2757575 轉 65105
+              br
+              i.building.icon
+              | 館址：70101 台南市大學路 1 號 國立成功大學成功校區數學系館 1 樓
+              br
+              i.location.arrow.icon
+              a(href='https://goo.gl/maps/bBXnC5XJRsmPSXUj6' target='_blank') Google 地圖 
+              br
+
+            .three.wide.column
+              //TODO 網頁認證
+              h4.ui.header(style='margin-bottom: 2px;') &emsp;
+              .ui.list(role='list' style='margin-top: 2px;')
+                li(role='listitem')
+                  a.jsx-2061850338(href='/') &emsp;
+                li(role='listitem')
+                  a.jsx-2061850338(href='/') &emsp;
+                li(role='listitem')
+                  a.jsx-2061850338(href='/') &emsp;
+            .three.wide.column
+              //- h4.ui.header(style='margin-bottom: 2px;') API
+              //- //TODO API還沒做 //還沒做就先拿掉ㄅ AndyLee
+              //- .ui.list(role='list' style='margin-top: 2px;')
+              //-   li(role='listitem')
+              //-     a.jsx-2061850338(href='/themes') 最新消息
+              //-   li(role='listitem')
+              //-     a.jsx-2061850338(href='/templates') 常用連結
+            .three.wide.column
+              h4.ui.header(style='margin-bottom: 2px;') 網站維護
+              .ui.list(role='list' style='margin-top: 2px;')
+                li(role='listitem')
+                  a.jsx-2061850338(target='_blank' href='https://github.com/gyrotaroload/LibraryOfficialWebsite/issues') 錯誤回報
+                  //TODO錯誤回報的網址要更動
+                li(role='listitem')
+                  a.jsx-2061850338(target='_blank' href='/main') 後台管理
+                li(role='listitem')
+                  a.jsx-2061850338(target='_blank' href='https://github.com/andythebreaker/LibraryOfficialWebsite') 程式開源
+                  //TODO open in new window
+  #aLotOFjs(style='display: none;')
+    // 請注意:所有script的順序都是嚴格要求的
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js')
+    script(src='./jumbotron/js/index.js')
+    script(src='https://unpkg.com/swiper@7/swiper-bundle.min.js')
+    script(src='./jumbotron/js/swipe.js')
+    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js' integrity='sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    //- script(src='./jumbotron/js/qrcodeMapButton.js')
+    // 下2順序很重要
+    //- script(src='./jumbotron/js/ajax_init.js')
+    script(src='./jumbotron/js/open.js')

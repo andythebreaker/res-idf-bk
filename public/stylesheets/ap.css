@@ -1,0 +1,10 @@
+.loader {
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top; }
+  .loader svg path, .loader svg rect {
+    fill: #FF6700; }
+
+/*# sourceMappingURL=ap.css.map */

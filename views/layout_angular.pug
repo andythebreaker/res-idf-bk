@@ -1,0 +1,29 @@
+doctype html
+html(ng-app='myApp' ng-controller='AppCtrl' lang='en')
+  head
+    link(crossorigin="anonymous" rel='stylesheet' href='/stylesheets/main_page_back.css')
+    title= title
+    //link(rel='stylesheet', href='/stylesheets/style.css')
+    style.
+      *{font-family:'Noto Sans TC'}
+    block contentHEAD
+  body#root
+    if window_location_href_main
+      button#main_page_back_btn(onclick='window.location.href = "/main";' title='Go to top') 回後台首頁
+    block content
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+    script.
+      WebFontConfig = {
+      custom: {
+      //families: ['DFYuan-W5-WIN-BF'],
+      //urls: ['/stylesheets/fonts.css']
+      families: ['Noto Sans TC'],
+      urls: ['https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional']
+      }
+      };
+      (function (d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.async = true;//非同步方式載入.js
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      s.parentNode.insertBefore(wf, s);
+      })(document);
